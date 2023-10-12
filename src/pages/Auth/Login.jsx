@@ -1,12 +1,17 @@
 import { HiOutlineLockClosed } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 export default function Login() {
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies(["jwt"]); // Do not remove cookies even if not used or it will cause error
+  const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState({});
   const {
     register,
@@ -14,6 +19,58 @@ export default function Login() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
+  const redirectURL = localStorage.getItem("redirectURL");
+
+  async function onSubmit(data) {
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/auth/login",
+        data
+      );
+
+      // Handle successful login
+      const token = response.data.token;
+      const user = response.data.data.user;
+      setCookie("jwt", token, { path: "/" });
+      localStorage.setItem("userInfo", JSON.stringify(user));
+
+      setIsLoading(false);
+      reset();
+      setServerError({});
+
+      if (redirectURL) {
+        localStorage.removeItem("redirectURL");
+        navigate(redirectURL);
+      } else {
+        navigate("/map");
+      }
+    } catch (error) {
+      // Handle error response
+      const { status } = error.response;
+
+      // Validation error from the server
+      if (status === 400) {
+        const responseErrors = error.response.data.errors;
+        responseErrors.forEach((error) => {
+          errors[error.path] = { message: error.msg };
+        });
+        reset({ password: "" });
+        setServerError(errors);
+      } else if (status === 401) {
+        errors["email"] = { message: error.response.data.message };
+        reset({ password: "" });
+        setServerError(errors);
+      } else {
+        // Status 500
+        navigate("/server-error");
+      }
+      setIsLoading(false);
+    }
+  }
 
   return (
     <main className="p-10 bg-primary">
@@ -45,7 +102,7 @@ export default function Login() {
               </div>
               <form
                 className="my-8 space-y-8"
-                // onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
                 noValidate
               >
                 {/* Email */}
@@ -76,9 +133,24 @@ export default function Login() {
 
                 {/* Button */}
                 <div className="flex justify-center">
-                  <Button color="green" className="w-full font-montserrat">
-                    Login
-                  </Button>
+                  {isLoading ? (
+                    <Button
+                      type="submit"
+                      color="gray"
+                      disabled
+                      className="w-full font-montserrat"
+                    >
+                      Loging in...
+                    </Button>
+                  ) : (
+                    <Button
+                      type="submit"
+                      color="green"
+                      className="w-full font-montserrat"
+                    >
+                      Login
+                    </Button>
+                  )}
                 </div>
               </form>
 
