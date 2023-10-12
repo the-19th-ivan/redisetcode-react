@@ -10,8 +10,17 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { HiStar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 export default function RegionCard({ region }) {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+  const navigate = useNavigate();
+
+  function handleExplore() {
+    navigate(`/map/${region._id}/zones`);
+  }
+
   return (
     <Card className="max-w-[24rem] flex flex-col justify-between overflow-hidden bg-secondary">
       <div>
@@ -21,14 +30,14 @@ export default function RegionCard({ region }) {
           color="transparent"
           className="m-0 rounded-none"
         >
-          <img src={region.image} />
+          <img src={region.cover} />
         </CardHeader>
         <CardBody>
           <Typography
             variant="h5"
             className="text-gray-900 font-montserrat font-bold whitespace-nowrap overflow-ellipsis overflow-hidden"
           >
-            {region.title}
+            {region.name}
           </Typography>
           <Typography
             variant="paragraph"
@@ -41,20 +50,23 @@ export default function RegionCard({ region }) {
 
       <CardFooter className="flex items-center justify-between">
         <div className="flex items-center -space-x-3">
-          {region.earnableBadges.map((badge) => (
-            <Tooltip key={badge.name} content={badge.name}>
-              <Avatar
-                size="sm"
-                variant="circular"
-                alt={badge.name}
-                src={badge.image}
-                className="border border-gray-800 hover:z-10"
-              />
-            </Tooltip>
-          ))}
+          {region.earnableBadges &&
+            region.earnableBadges.map((badge) => (
+              <Tooltip key={badge.name} content={badge.name}>
+                <Avatar
+                  size="sm"
+                  variant="circular"
+                  alt={badge.name}
+                  src={badge.image}
+                  className="border border-gray-800 hover:z-10"
+                />
+              </Tooltip>
+            ))}
         </div>
-        {region.subscription === "basic" ? (
-          <Button color="indigo">Explore</Button>
+        {region.type === "basic" ? (
+          <Button color="indigo" onClick={handleExplore}>
+            Explore
+          </Button>
         ) : (
           <Button color="indigo" className="flex items-center gap-3">
             <HiStar className="text-amber-800 text-lg" />

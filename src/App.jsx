@@ -51,7 +51,7 @@ function App() {
           }
         />
         <Route
-          path="/zone"
+          path="/map/:regionId/zones"
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <Zone />

@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   Card,
   CardBody,
   Chip,
@@ -16,9 +17,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Profile() {
+  const [cookies, setCookie] = useCookies(["jwt"]);
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [cookies] = useCookies(["jwt"]);
 
   const navigate = useNavigate();
 
@@ -58,6 +59,13 @@ export default function Profile() {
     fetchData();
   }, [cookies.jwt, navigate]);
 
+  function handleLogout() {
+    // Set the expiration time to a past date to invalidate and remove the cookie
+    setCookie("jwt", "", { path: "/", expires: new Date(0) });
+    localStorage.removeItem("userInfo");
+    navigate("/");
+  }
+
   return (
     <main className="bg-primary h-screen">
       <Sidebar />
@@ -79,13 +87,19 @@ export default function Profile() {
                 />
               </div>
               <div className="4/5">
-                <Typography
-                  variant="h4"
-                  className="text-gray-900 font-montserrat font-bold flex gap-4"
-                >
-                  {user.username}
-                  <Chip color="indigo" value="Basic" size="sm" />
-                </Typography>
+                <div className="flex justify-between">
+                  <Typography
+                    variant="h4"
+                    className="text-gray-900 font-montserrat font-bold flex gap-4"
+                  >
+                    {user.username}
+                    <Chip color="indigo" value="Basic" size="sm" />
+                  </Typography>
+                  <Button color="red" onClick={handleLogout}>
+                    Logout
+                  </Button>
+                </div>
+
                 <Typography
                   variant="lead"
                   className="text-gray-800 font-montserrat"
