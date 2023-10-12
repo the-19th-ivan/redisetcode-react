@@ -11,24 +11,101 @@ import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import Profile from "./pages/Profile/Profile";
 import ServerError from "./pages/ServerError";
+import { useCookies } from "react-cookie";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import Home from "./pages/Home/Home";
 
 function App() {
+  /*
+    Get JWT to check if user is Auth
+  */
+  const [cookies] = useCookies(["jwt"]);
+  function isAuthenticated() {
+    const token = cookies.jwt;
+    return !!token;
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path="/map" element={<Map />} />
-        <Route path="/codelab" element={<Codelab />} />
-        <Route path="/zone" element={<Zone />} />
-        <Route path="/stage" element={<Stage />} />
-        <Route path="/lesson" element={<Lesson />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/quest" element={<Quest />} />
-        <Route path="/session" element={<QuestSession />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-
         <Route path="/server-error" element={<ServerError />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Map />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/codelab"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Codelab />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/zone"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Zone />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stage"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Stage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/lesson"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Lesson />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Leaderboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quest"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Quest />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/session"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <QuestSession />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

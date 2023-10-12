@@ -1,7 +1,9 @@
-import { Avatar, Chip, Tooltip, Typography } from "@material-tailwind/react";
-import { GiFireGem } from "react-icons/gi";
+import { Avatar, Chip, Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
   return (
     <nav className="bg-secondary border-b border-gray-400 px-10 py-2.5">
       <div className="flex justify-between items-center">
@@ -39,36 +41,36 @@ export default function Navbar() {
         </div>
         {/* Right navbar */}
         <div className="flex items-center space-x-6">
-          {/* <Tooltip content="Gems" placement="bottom">
-            <Chip
-              value="100 +"
-              variant="gradient"
-              icon={<GiFireGem className="text-red-800 text-lg" />}
-            />
-          </Tooltip> */}
-          <div className="flex items-center gap-1">
-            <Avatar
-              src="/knight.png"
-              alt="avatar"
-              size="sm"
-              variant="rounded"
-            />
-            <div>
-              <Typography
-                variant="paragraph"
-                className="font-poppins font-medium"
-              >
-                Mr Knight
-              </Typography>
-              <Typography
-                variant="small"
-                className="font-poppins font-normal text-gray-800"
-              >
-                Knight
-              </Typography>
+          <Link to="/profile" className="cursor-pointer">
+            <div className="flex items-center gap-1">
+              <Avatar
+                src={user.character.avatar}
+                alt="avatar"
+                size="sm"
+                variant="rounded"
+              />
+              <div>
+                <Typography
+                  variant="paragraph"
+                  className="font-poppins font-medium"
+                >
+                  {user.username}
+                </Typography>
+                <Typography
+                  variant="small"
+                  className="font-poppins font-normal text-gray-800"
+                >
+                  {user.character.name}
+                </Typography>
+              </div>
             </div>
-          </div>
-          <Chip color="indigo" value="Basic" />
+          </Link>
+
+          {user.type === "basic" ? (
+            <Chip color="indigo" value="Basic" />
+          ) : (
+            <Chip color="indigo" variant="gradient" value="Pro" />
+          )}
         </div>
       </div>
     </nav>
