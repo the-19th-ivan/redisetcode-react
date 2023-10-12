@@ -10,6 +10,7 @@ import QuestSession from "./pages/Quest/QuestSession";
 import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import Profile from "./pages/Profile/Profile";
+import ServerError from "./pages/ServerError";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/server-error" element={<ServerError />} />
       </Routes>
     </Router>
   );

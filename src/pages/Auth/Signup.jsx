@@ -1,145 +1,63 @@
-import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import Input from "../../components/Input";
-import {
-  HiOutlineEnvelope,
-  HiOutlineLockClosed,
-  HiOutlineUser,
-} from "react-icons/hi2";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { Spinner } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Characters from "./Characters";
+import { SignupForm } from "./SignupForm";
 
 export default function Signup() {
-  const [serverError, setServerError] = useState("");
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const [characters, setCharacters] = useState([]); // All characters fetch from DB
+  const [character, setCharacter] = useState(null); // The current selected character ID
+
+  const navigate = useNavigate();
+
+  // Fetch All Characters
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/characters"
+        );
+        const data = response.data.data;
+        setCharacters(data.characters);
+      } catch (error) {
+        navigate("/server-error");
+      }
+    }
+    fetchData();
+  }, [navigate]);
+
+  // Set the character when fetchData is DONE
+  useEffect(() => {
+    if (characters.length > 0) setCharacter(characters[0]._id);
+  }, [characters]);
+
+  // Get the current Character ID that will be send to Form
+  function handleGetCharacter(id) {
+    setCharacter(id);
+  }
+
+  // Show loading screen when data fetching is not yet done
+  if (characters.length === 0) {
+    return (
+      <main className="w-full h-screen flex justify-center items-center">
+        <Spinner color="indigo" />
+      </main>
+    );
+  }
 
   return (
     <main className="bg-primary">
       <section className="p-10 flex gap-6">
         <div className="w-3/5 flex flex-col items-center">
-          <div className="flex gap-6 items-center">
-            <Button variant="text">Prev</Button>
-            <img
-              className="w-36 h-36 rounded-full object-cover object-center"
-              src="/knight.png"
-              alt="nature image"
-            />
-            <Button variant="text">Next</Button>
-          </div>
-          <Typography variant="h4" className="mt-10 font-montserrat font-bold">
-            Knight
-          </Typography>
-          <Typography variant="paragraph" className="mt-16 font-montserrat">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti
-            quae officiis beatae, obcaecati sed assumenda dolorem ad impedit ex!
-            Alias.
-          </Typography>
+          <Characters
+            onGetCharacter={handleGetCharacter}
+            characters={characters}
+          />
         </div>
         <div className="w-2/5">
-          <Card>
-            <CardBody className="bg-secondary rounded-lg">
-              <section className="">
-                <div className="text-center dark:text-white">
-                  <Link to="/">
-                    <Typography
-                      variant="h3"
-                      className="text-gray-900 font-mavenPro font-black"
-                    >
-                      RediSetCode
-                    </Typography>
-                  </Link>
-                  <Typography
-                    variant="small"
-                    className="text-gray-800 font-montserrat uppercase"
-                  >
-                    Create new account
-                  </Typography>
-                </div>
-                <form
-                  className="my-8 space-y-8"
-                  // onSubmit={handleSubmit(onSubmit)}
-                  noValidate
-                >
-                  {/* Username */}
-                  <Input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    register={register("username", {
-                      required: "Username is required.",
-                      minLength: {
-                        value: 3,
-                        message: "Username must be atleast 3 characters long",
-                      },
-                    })}
-                    error={errors.username || serverError.username}
-                  >
-                    <HiOutlineUser />
-                  </Input>
-                  {/* Email */}
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    register={register("email", {
-                      required: "Email is required.",
-                      pattern: {
-                        value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                        message: "Email is not valid.",
-                      },
-                    })}
-                    error={errors.email || serverError.email}
-                  >
-                    <HiOutlineEnvelope />
-                  </Input>
-
-                  {/* Password */}
-                  <Input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    register={register("password", {
-                      required: "Password is required.",
-                      minLength: {
-                        value: 8,
-                        message: "Password must be atleast 8 character long.",
-                      },
-                    })}
-                    error={errors.password || serverError.password}
-                  >
-                    <HiOutlineLockClosed />
-                  </Input>
-
-                  <div className="flex justify-center">
-                    <Button color="green" className="w-full font-montserrat">
-                      Create An Account
-                    </Button>
-                  </div>
-                </form>
-
-                <div className="text-center text-gray-800">
-                  <p className="font-montserrat italic">
-                    Already have an account?
-                  </p>
-                  <Link
-                    to="/login"
-                    className="text-indigo-600 hover:underline italic"
-                  >
-                    Login here
-                  </Link>
-                </div>
-
-                <p className="mt-10 text-sm italic text-center text-gray-800 font-montserrat">
-                  **Note: Character cannot be change later on**
-                </p>
-              </section>
-            </CardBody>
-          </Card>
+          <SignupForm character={character} />
         </div>
       </section>
     </main>
