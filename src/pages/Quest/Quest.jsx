@@ -33,7 +33,7 @@ export default function Quest() {
   }
 
   return (
-    <main className="bg-primary">
+    <main className="bg-primary h-screen">
       <Sidebar />
 
       <section className="sm:ml-[15rem]">

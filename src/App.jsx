@@ -59,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/stage"
+          path="/stage/:zoneId/stages"
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <Stage />

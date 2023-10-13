@@ -1,13 +1,20 @@
 /* eslint-disable react/prop-types */
 import { Button, Typography } from "@material-tailwind/react";
 import { HiStar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 export default function ZoneCarousel({ zone }) {
+  const navigate = useNavigate();
+
+  function handleExplore() {
+    navigate(`/stage/${zone._id}/stages`);
+  }
+
   return (
     <div className="relative h-full w-full">
       <img
-        src={zone.image}
-        alt={zone.title}
+        src={zone.cover}
+        alt={zone.name}
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
@@ -17,7 +24,7 @@ export default function ZoneCarousel({ zone }) {
             color="white"
             className="mb-4 font-montserrat text-2xl md:text-3xl lg:text-3xl"
           >
-            {zone.title}
+            {zone.name}
           </Typography>
           <Typography
             variant="paragraph"
@@ -27,8 +34,8 @@ export default function ZoneCarousel({ zone }) {
             {zone.description}
           </Typography>
           <div className="flex items-center gap-6">
-            {zone.subscription === "basic" ? (
-              <Button size="lg" color="indigo">
+            {zone.type === "basic" ? (
+              <Button size="lg" color="indigo" onClick={handleExplore}>
                 Explore
               </Button>
             ) : (

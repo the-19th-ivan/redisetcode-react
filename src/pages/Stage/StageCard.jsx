@@ -3,14 +3,14 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { GiBroadsword } from "react-icons/gi";
 import { HiBadgeCheck, HiLockClosed, HiStar } from "react-icons/hi";
 
-export default function StageCard({ stage }) {
+export default function StageCard({ stage, status }) {
   let customClass;
 
-  switch (stage.status) {
+  switch (status) {
     case "completed":
       customClass = "border-green-800 cursor-pointer";
       break;
-    case "ongoing":
+    case "available":
       customClass = "border-indigo-800 cursor-pointer";
       break;
     case "locked":
@@ -27,31 +27,29 @@ export default function StageCard({ stage }) {
     >
       <CardBody className="flex items-center gap-8">
         <div>
-          {stage.status === "ongoing" && (
+          {status === "available" && (
             <GiBroadsword className="text-3xl text-gray-900" />
           )}
-          {stage.status === "completed" && (
+          {status === "completed" && (
             <HiBadgeCheck className="text-3xl text-green-800" />
           )}
-          {stage.status === "locked" && (
+          {status === "locked" && (
             <HiLockClosed className="text-3xl text-gray-500" />
           )}
-          {stage.status === "pro" && (
-            <HiStar className="text-3xl text-amber-700" />
-          )}
+          {status === "pro" && <HiStar className="text-3xl text-amber-700" />}
         </div>
         <div>
           <Typography
             variant="small"
             className="text-gray-800 font-montserrat font-semibold"
           >
-            Stage {stage.stage}
+            Stage {stage.stageNumber}
           </Typography>
           <Typography
             variant="h5"
             className="text-gray-900 font-montserrat font-bold"
           >
-            {stage.title}
+            {stage.name}
           </Typography>
           <Typography
             variant="paragraph"

@@ -2,37 +2,54 @@ import { Card, CardBody, Checkbox, Typography } from "@material-tailwind/react";
 import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import StageCard from "./StageCard";
-
-const stages = [
-  {
-    title: "Introduction to Programming",
-    description:
-      "Before anything else, you must know the journey you will take.",
-    stage: 1,
-    status: "completed",
-  },
-  {
-    title: "The Power of C++",
-    description: "The sage Bjourne Strastroup invented C++ for you to use.",
-    stage: 2,
-    status: "ongoing",
-  },
-  {
-    title: "The Core of Mech: Variable",
-    description: "Discover how a mech moves its part through its core.",
-    stage: 3,
-    status: "locked",
-  },
-  {
-    title: "Extra Curricular",
-    description:
-      "Professor X conduct special class to discuss the power behind mech core.",
-    stage: 4,
-    status: "pro",
-  },
-];
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function Stage() {
+  const [stages, setStages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [cookies] = useCookies(["jwt"]);
+
+  const navigate = useNavigate();
+  const { zoneId } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setIsLoading(true);
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${cookies.jwt}`,
+          },
+        };
+
+        const response = await axios.get(
+          `http://localhost:8000/api/v1/stages/${zoneId}/stages`,
+          config
+        );
+
+        const { stages } = response.data.data;
+        setStages(stages);
+        setIsLoading(false);
+      } catch (error) {
+        const status = error.response.status;
+
+        if (status === 401) {
+          // Not Authenticated, redirect to Login page
+          navigate("/login");
+        } else {
+          // Status 500
+          navigate("/server-error");
+        }
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, [cookies.jwt, navigate, zoneId]);
+
   return (
     <main className="bg-primary">
       <Sidebar />
@@ -45,7 +62,11 @@ export default function Stage() {
           {/* Make this list of stage card scrollable so that I dont need to scroll the whole screen */}
           <div className="w-3/4 h-[75vh] pr-10 overflow-y-auto">
             {stages.map((stage) => (
-              <StageCard key={stage.title} stage={stage} />
+              <StageCard
+                key={stage._id}
+                stage={stage.stage}
+                status={stage.status}
+              />
             ))}
           </div>
           <div className="w-1/4">

@@ -1,55 +1,75 @@
-import { Carousel } from "@material-tailwind/react";
+import { Carousel, Spinner } from "@material-tailwind/react";
 import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import ZoneCarousel from "./ZoneCarousel";
-
-const zones = [
-  {
-    title: "Beginner's Zone: Unleashing The Power of C++",
-    image: "/robot_cover.jpg",
-    subscription: "basic",
-    description:
-      "In this zone, you will attend the school of mech and magic. You will get to know how to move those machine with a powerful magic called C++",
-  },
-  {
-    title: "Hero's Zone: Guide to Flowchart and Algorithms",
-    image: "/forest_cover.jpg",
-    subscription: "basic",
-    description:
-      "In this zone, its time to explore the candid forest and use all the knowledge you learned in the academy",
-  },
-  {
-    title: "Labyrinth Zone: Navigating Your Way Out",
-    image: "/labyrinth_cover.jpg",
-    subscription: "basic",
-    description:
-      "While exploring the Candid Forest, you fell into a labyrinth. Find your way out of the labyrinth or go deeper to find treasure. The choice is yours.",
-  },
-  {
-    title: "Sage Zone: A Master Has Appeared",
-    image: "/sage_cover.jpg",
-    subscription: "pro",
-    description:
-      "A great wizard has appeared! He see the talent within you and willing to give you tips and tricks to speed up your C++ journey.",
-  },
-];
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function Zone() {
+  const [zones, setZones] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [cookies] = useCookies(["jwt"]);
+
+  const navigate = useNavigate();
+  const { regionId } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setIsLoading(true);
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${cookies.jwt}`,
+          },
+        };
+
+        const response = await axios.get(
+          `http://localhost:8000/api/v1/zones/${regionId}/zones`,
+          config
+        );
+
+        const { zones } = response.data.data;
+        setZones(zones);
+        setIsLoading(false);
+      } catch (error) {
+        const status = error.response.status;
+
+        if (status === 401) {
+          // Not Authenticated, redirect to Login page
+          navigate("/login");
+        } else {
+          // Status 500
+          navigate("/server-error");
+        }
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, [cookies.jwt, navigate, regionId]);
+
   return (
-    <main className="bg-primary">
+    <main className="bg-primary h-screen">
       <Sidebar />
 
       <section className="sm:ml-[15rem]">
         <Navbar />
 
-        {/* Content */}
-        <div className="w-full p-10">
-          <Carousel className="rounded-xl">
-            {zones.map((zone) => (
-              <ZoneCarousel key={zone.title} zone={zone} />
-            ))}
-          </Carousel>
-        </div>
+        {isLoading ? (
+          <div className="h-[90vh] flex items-center justify-center">
+            <Spinner color="indigo" />
+          </div>
+        ) : (
+          <div className="w-full p-10">
+            <Carousel className="rounded-xl">
+              {zones.map((zone) => (
+                <ZoneCarousel key={zone.title} zone={zone} />
+              ))}
+            </Carousel>
+          </div>
+        )}
       </section>
     </main>
   );
