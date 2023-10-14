@@ -13,6 +13,7 @@ import { HiMenu, HiTerminal } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 export default function LessonNavbar() {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -43,29 +44,35 @@ export default function LessonNavbar() {
                 icon={<GiFireGem className="text-red-800 text-lg" />}
               />
             </Tooltip> */}
-            <div className="flex items-center gap-1">
-              <Avatar
-                src="/knight.png"
-                alt="avatar"
-                size="sm"
-                variant="rounded"
-              />
-              <div>
-                <Typography
-                  variant="paragraph"
-                  className="font-poppins font-medium"
-                >
-                  Mr Knight
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-poppins font-normal text-gray-800"
-                >
-                  Knight
-                </Typography>
+            <Link to="/profile" className="cursor-pointer">
+              <div className="flex items-center gap-1">
+                <Avatar
+                  src={user.character.avatar}
+                  alt="avatar"
+                  size="sm"
+                  variant="rounded"
+                />
+                <div>
+                  <Typography
+                    variant="paragraph"
+                    className="font-poppins font-medium"
+                  >
+                    {user.username}
+                  </Typography>
+                  <Typography
+                    variant="small"
+                    className="font-poppins font-normal text-gray-800"
+                  >
+                    {user.character.name}
+                  </Typography>
+                </div>
               </div>
-            </div>
-            <Chip color="indigo" value="Basic" />
+            </Link>
+            {user.type === "basic" ? (
+              <Chip color="indigo" value="Basic" />
+            ) : (
+              <Chip color="indigo" variant="gradient" value="Pro" />
+            )}
           </div>
         </div>
       </nav>

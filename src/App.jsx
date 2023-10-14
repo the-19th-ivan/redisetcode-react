@@ -67,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/lesson"
+          path="/lesson/:stageId"
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <Lesson />

@@ -5,10 +5,10 @@ module.exports = withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      nunito: ["Nunito", "sans-serif"],
+      // nunito: ["Nunito", "sans-serif"],
       mavenPro: ["'Maven Pro'", "sans-serif"],
       montserrat: ["Montserrat", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"],
+      // poppins: ["Poppins", "sans-serif"],
     },
     extend: {
       colors: {

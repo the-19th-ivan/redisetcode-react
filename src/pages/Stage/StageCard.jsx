@@ -2,8 +2,11 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { GiBroadsword } from "react-icons/gi";
 import { HiBadgeCheck, HiLockClosed, HiStar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 export default function StageCard({ stage, status }) {
+  const navigate = useNavigate();
+
   let customClass;
 
   switch (status) {
@@ -21,8 +24,17 @@ export default function StageCard({ stage, status }) {
       break;
   }
 
+  function handleOpenLesson() {
+    if (status === "locked") {
+      return;
+    }
+
+    navigate(`/lesson/${stage._id}`);
+  }
+
   return (
     <Card
+      onClick={handleOpenLesson}
       className={`w-full max-w-[48rem] flex-row my-6 bg-secondary hover:border ${customClass}`}
     >
       <CardBody className="flex items-center gap-8">

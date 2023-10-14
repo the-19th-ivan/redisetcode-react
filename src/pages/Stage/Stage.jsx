@@ -1,4 +1,10 @@
-import { Card, CardBody, Checkbox, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  Checkbox,
+  Spinner,
+  Typography,
+} from "@material-tailwind/react";
 import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import StageCard from "./StageCard";
@@ -57,58 +63,63 @@ export default function Stage() {
       <section className="sm:ml-[15rem] h-full grid grid-rows-[auto,1fr]">
         <Navbar />
 
-        {/* Content */}
-        <div className="w-full h-full p-10 flex gap-8">
-          {/* Make this list of stage card scrollable so that I dont need to scroll the whole screen */}
-          <div className="w-3/4 h-[75vh] pr-10 overflow-y-auto">
-            {stages.map((stage) => (
-              <StageCard
-                key={stage._id}
-                stage={stage.stage}
-                status={stage.status}
-              />
-            ))}
+        {isLoading ? (
+          <div className="h-[90vh] flex items-center justify-center">
+            <Spinner color="indigo" />
           </div>
-          <div className="w-1/4">
-            <Card className="w-full max-w-[48rem] flex-row bg-secondary">
-              <CardBody>
-                <Typography
-                  variant="small"
-                  className="text-gray-800 font-montserrat font-semibold"
-                >
-                  SORT BY
-                </Typography>
+        ) : (
+          <div className="w-full h-full p-10 flex gap-8">
+            {/* Make this list of stage card scrollable so that I dont need to scroll the whole screen */}
+            <div className="w-3/4 h-[75vh] pr-10 overflow-y-auto">
+              {stages.map((stage) => (
+                <StageCard
+                  key={stage._id}
+                  stage={stage.stage}
+                  status={stage.status}
+                />
+              ))}
+            </div>
+            <div className="w-1/4">
+              <Card className="w-full max-w-[48rem] flex-row bg-secondary">
+                <CardBody>
+                  <Typography
+                    variant="small"
+                    className="text-gray-800 font-montserrat font-semibold"
+                  >
+                    SORT BY
+                  </Typography>
 
-                <div className="flex flex-col">
-                  <Checkbox
-                    color="indigo"
-                    label="Name"
-                    labelProps={{
-                      style: {
-                        color: "black",
-                        fontWeight: "500",
-                        fontFamily: "Montserrat",
-                        fontSize: "14px",
-                      },
-                    }}
-                  />
-                  <Checkbox
-                    color="indigo"
-                    label="Completed"
-                    labelProps={{
-                      style: {
-                        color: "#030712",
-                        fontWeight: "500",
-                        fontFamily: "Montserrat",
-                        fontSize: "14px",
-                      },
-                    }}
-                  />
-                </div>
-              </CardBody>
-            </Card>
+                  <div className="flex flex-col">
+                    <Checkbox
+                      color="indigo"
+                      label="Name"
+                      labelProps={{
+                        style: {
+                          color: "black",
+                          fontWeight: "500",
+                          fontFamily: "Montserrat",
+                          fontSize: "14px",
+                        },
+                      }}
+                    />
+                    <Checkbox
+                      color="indigo"
+                      label="Completed"
+                      labelProps={{
+                        style: {
+                          color: "#030712",
+                          fontWeight: "500",
+                          fontFamily: "Montserrat",
+                          fontSize: "14px",
+                        },
+                      }}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </main>
   );
