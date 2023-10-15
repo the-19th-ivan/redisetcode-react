@@ -1,31 +1,11 @@
+/* eslint-disable react/prop-types */
 import { Card, Typography } from "@material-tailwind/react";
 import { GiFireGem } from "react-icons/gi";
 import { HiArrowNarrowUp } from "react-icons/hi";
 
 const TABLE_HEAD = ["Rank", "Name", "Character", "Exp"];
 
-const TABLE_ROWS = [
-  {
-    rank: "4",
-    name: "ShadowxX",
-    character: "Slayer",
-    exp: "2",
-  },
-  {
-    rank: "5",
-    name: "ShadowxX",
-    character: "Slayer",
-    exp: "1",
-  },
-  {
-    rank: "6",
-    name: "ShadowxX",
-    character: "Slayer",
-    exp: "1",
-  },
-];
-
-export default function RankingTable() {
+export default function RankingTable({ users }) {
   return (
     <Card className="">
       <table className="w-full text-center">
@@ -47,15 +27,15 @@ export default function RankingTable() {
           </tr>
         </thead>
         <tbody className="bg-secondary">
-          {TABLE_ROWS.map(({ rank, name, character, exp }) => (
-            <tr key={name} className="even:bg-[#f4f4f4]">
+          {users.map((user, index) => (
+            <tr key={user._id} className="even:bg-[#f4f4f4]">
               <td className="p-4">
                 <Typography
                   variant="small"
                   className="font-montserrat font-semibold text-gray-800 flex justify-center items-center gap-1"
                 >
                   <HiArrowNarrowUp className="text-gray-800 text-base" />
-                  {rank}
+                  {index + 4}
                 </Typography>
               </td>
               <td className="p-4">
@@ -64,7 +44,7 @@ export default function RankingTable() {
                   color="blue-gray"
                   className="font-montserrat font-medium text-gray-800"
                 >
-                  {name}
+                  {user.username}
                 </Typography>
               </td>
               <td className="p-4">
@@ -73,7 +53,7 @@ export default function RankingTable() {
                   color="blue-gray"
                   className="font-montserrat font-normal text-gray-800"
                 >
-                  {character}
+                  {user.character.name}
                 </Typography>
               </td>
               <td className="p-4">
@@ -85,7 +65,7 @@ export default function RankingTable() {
                   className="font-montserrat font-medium text-gray-800 flex justify-center items-center gap-1"
                 >
                   <GiFireGem className="text-xl text-red-800" />
-                  {exp}
+                  {user.experience}
                 </Typography>
               </td>
             </tr>

@@ -18,11 +18,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
+import LevelUpModal from "../../components/modals/LevelUpModal";
 
 export default function Lesson() {
   const monaco = useMonaco();
   const [openEditor, setOpenEditor] = useState(true);
   const [openModal, setOpenModal] = useState("");
+  const [openLevelUpModal, setOpenLevelUpModal] = useState(false);
   const [nextLessonBtn, setNextLessonBtn] = useState(false);
   const [openTerminal, setOpenTerminal] = useState(false);
   const [userCode, setUserCode] = useState();
@@ -122,9 +124,15 @@ export default function Lesson() {
       );
 
       const responseData = response.data.data;
-      setNextLesson(responseData.nextStage);
+
       setIsLoading(false);
-      setOpenModal("mark-as-done");
+      if (responseData.levelUp) {
+        setOpenLevelUpModal(true);
+      } else {
+        setOpenModal("mark-as-done");
+      }
+
+      setNextLesson(responseData.nextStage);
       setNextLessonBtn(true);
       console.log("finished with no error");
     } catch (error) {
@@ -275,6 +283,13 @@ export default function Lesson() {
       <LessonCompletedModal
         open={openModal === "already-completed"}
         handleOpen={() => handleOpenModal("")}
+      />
+      <LevelUpModal
+        open={openLevelUpModal}
+        handleOpen={() => {
+          setOpenLevelUpModal(false);
+          setOpenModal("mark-as-done");
+        }}
       />
       <TerminalModal
         open={openTerminal}

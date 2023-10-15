@@ -19,7 +19,7 @@ export default function TopRankCard({ data, rank }) {
               variant="h5"
               className="text-gray-800 font-montserrat font-semibold"
             >
-              {data.name}
+              {data.username}
             </Typography>
             <Typography
               variant="paragraph"
@@ -35,7 +35,7 @@ export default function TopRankCard({ data, rank }) {
             className="text-gray-800 font-montserrat font-medium flex items-center gap-1"
           >
             <GiFireGem className="text-xl text-red-800" />
-            {data.level}
+            {data.experience}
           </Typography>
         </div>
       </CardBody>
