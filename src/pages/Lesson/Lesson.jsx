@@ -1,10 +1,14 @@
 import { Editor, useMonaco } from "@monaco-editor/react";
 import LessonNavbar from "./LessonNavbar";
-import TestContent from "./contents/TestContent";
 import "monaco-themes/themes/Solarized-dark.json";
 import { useEffect, useState } from "react";
 import { Button, Spinner } from "@material-tailwind/react";
-import { HiCheckCircle, HiOutlineCode, HiPlay } from "react-icons/hi";
+import {
+  HiArrowNarrowRight,
+  HiCheckCircle,
+  HiOutlineCode,
+  HiPlay,
+} from "react-icons/hi";
 import LessonModal from "../../components/modals/LessonModal";
 import TerminalModal from "../../components/modals/TerminalModal";
 import StageOne from "./contents/StageOne";
@@ -13,13 +17,16 @@ import StageThree from "./contents/StageThree";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
 
 export default function Lesson() {
   const monaco = useMonaco();
   const [openEditor, setOpenEditor] = useState(true);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState("");
+  const [nextLessonBtn, setNextLessonBtn] = useState(false);
   const [openTerminal, setOpenTerminal] = useState(false);
   const [lesson, setLesson] = useState({});
+  const [nextLesson, setNextLesson] = useState();
   const [code, setCode] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [cookies] = useCookies(["jwt"]);
@@ -31,6 +38,8 @@ export default function Lesson() {
     async function fetchData() {
       try {
         setIsLoading(true);
+        setOpenEditor(true);
+        setNextLessonBtn(false);
 
         const config = {
           headers: {
@@ -68,8 +77,14 @@ export default function Lesson() {
     setOpenTerminal((current) => !current);
   }
 
-  function handleOpenModal() {
-    setOpenModal((current) => !current);
+  function handleOpenModal(id) {
+    switch (id) {
+      case "mark-as-done":
+        setOpenModal("mark-as-done");
+        break;
+      default:
+        setOpenModal("");
+    }
   }
 
   function handleToggleEditor() {
@@ -87,6 +102,48 @@ export default function Lesson() {
       // monaco.editor.defineTheme("monokai-bright").then(_ => monaco.editor.setMonacoTheme("monokai-bright"));
     }
   }, [monaco]);
+
+  async function handleMarkAsDone() {
+    try {
+      setIsLoading(true);
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${cookies.jwt}`,
+        },
+      };
+
+      const response = await axios.post(
+        `http://localhost:8000/api/v1/stages/${stageId}/mark-as-done`,
+        {},
+        config
+      );
+
+      const responseData = response.data.data;
+      setNextLesson(responseData.nextStage);
+      setIsLoading(false);
+      setOpenModal("mark-as-done");
+      setNextLessonBtn(true);
+      console.log("finished with no error");
+    } catch (error) {
+      const { status } = error.response;
+
+      if (status === 400) {
+        setIsLoading(false);
+        setOpenModal("already-completed");
+      } else {
+        navigate("/server-error");
+      }
+    }
+  }
+
+  function handleNextStage() {
+    if (nextLesson) {
+      setOpenModal("");
+      navigate(`/lesson/${nextLesson}`);
+    }
+    return;
+  }
 
   function handleContent() {
     switch (lesson.content) {
@@ -117,15 +174,27 @@ export default function Lesson() {
             <div className="w-1/2 h-[80vh] overflow-y-auto">
               {handleContent()}
               <div className="mt-6">
-                <Button
-                  onClick={handleOpenModal}
-                  size="sm"
-                  color="green"
-                  className="flex items-center gap-3"
-                >
-                  <HiCheckCircle className="" />
-                  Mark as Done
-                </Button>
+                {nextLessonBtn ? (
+                  <Button
+                    onClick={handleNextStage}
+                    size="sm"
+                    color="indigo"
+                    className="flex items-center gap-3"
+                  >
+                    Next Lesson
+                    <HiArrowNarrowRight className="" />
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleMarkAsDone}
+                    size="sm"
+                    color="green"
+                    className="flex items-center gap-3"
+                  >
+                    <HiCheckCircle className="" />
+                    Mark as Done
+                  </Button>
+                )}
               </div>
             </div>
             <div className={`${openEditor ? "" : "hidden"} w-1/2 h-[80vh]`}>
@@ -161,7 +230,17 @@ export default function Lesson() {
         {openEditor ? "Close Editor" : "Open Editor"}
       </button>
 
-      <LessonModal open={openModal} handleOpen={handleOpenModal} />
+      <LessonModal
+        open={openModal === "mark-as-done"}
+        handleOpen={() => handleOpenModal("")}
+        nextStage={handleNextStage}
+        title={lesson.name}
+        exp={lesson.exp}
+      />
+      <LessonCompletedModal
+        open={openModal === "already-completed"}
+        handleOpen={() => handleOpenModal("")}
+      />
       <TerminalModal open={openTerminal} handleOpen={handleOpenTerminal} />
     </main>
   );
