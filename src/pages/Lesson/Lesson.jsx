@@ -2,7 +2,7 @@ import { Editor, useMonaco } from "@monaco-editor/react";
 import LessonNavbar from "./LessonNavbar";
 import "monaco-themes/themes/Solarized-dark.json";
 import { useEffect, useState } from "react";
-import { Button, Spinner } from "@material-tailwind/react";
+import { Button, Card, CardBody, Spinner } from "@material-tailwind/react";
 import {
   HiArrowNarrowRight,
   HiCheckCircle,
@@ -25,10 +25,12 @@ export default function Lesson() {
   const [openModal, setOpenModal] = useState("");
   const [nextLessonBtn, setNextLessonBtn] = useState(false);
   const [openTerminal, setOpenTerminal] = useState(false);
+  const [userCode, setUserCode] = useState();
   const [lesson, setLesson] = useState({});
   const [nextLesson, setNextLesson] = useState();
-  const [code, setCode] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [isCompiling, setIsCompiling] = useState(false);
+  const [output, setOutput] = useState();
   const [cookies] = useCookies(["jwt"]);
 
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ export default function Lesson() {
 
         const { stage } = response.data.data;
         setLesson(stage);
-        setCode(stage.codeSnippet);
+        setUserCode(stage.codeSnippet);
         if (!stage.codeSnippet) setOpenEditor(false);
         setIsLoading(false);
       } catch (error) {
@@ -137,6 +139,32 @@ export default function Lesson() {
     }
   }
 
+  // Send to server for compilation
+  async function handleRun() {
+    setOpenTerminal(true);
+    setIsCompiling(true);
+
+    try {
+      const data = {
+        code: userCode,
+      };
+
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/codelab/compiler",
+        data
+      );
+
+      const responseData = response.data;
+      const compiledCode = responseData.stdout || responseData.stderr;
+      setOutput(compiledCode);
+      setIsCompiling(false);
+    } catch (error) {
+      console.log(error);
+      navigate("/server-error");
+      setIsLoading(false);
+    }
+  }
+
   function handleNextStage() {
     if (nextLesson) {
       setOpenModal("");
@@ -201,7 +229,7 @@ export default function Lesson() {
               <div className="flex justify-between items-center p-1">
                 <p className="font-medium">main.cpp</p>
                 <Button
-                  onClick={handleOpenTerminal}
+                  onClick={handleRun}
                   size="sm"
                   color="green"
                   className="flex items-center gap-3"
@@ -210,13 +238,20 @@ export default function Lesson() {
                   Run
                 </Button>
               </div>
-              <Editor
-                width="100%"
-                height="100%"
-                language="cpp"
-                theme="vs-light"
-                value={code}
-              />
+              <Card className="h-full">
+                <CardBody className="h-full">
+                  <Editor
+                    width="100%"
+                    height="100%"
+                    language="cpp"
+                    theme="vs-light"
+                    value={userCode}
+                    onChange={(value) => {
+                      setUserCode(value);
+                    }}
+                  />
+                </CardBody>
+              </Card>
             </div>
           </div>
         )}
@@ -241,7 +276,12 @@ export default function Lesson() {
         open={openModal === "already-completed"}
         handleOpen={() => handleOpenModal("")}
       />
-      <TerminalModal open={openTerminal} handleOpen={handleOpenTerminal} />
+      <TerminalModal
+        open={openTerminal}
+        handleOpen={handleOpenTerminal}
+        output={output}
+        isLoading={isCompiling}
+      />
     </main>
   );
 }

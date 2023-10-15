@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
-import { Dialog, DialogHeader, DialogBody } from "@material-tailwind/react";
+import {
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  Spinner,
+} from "@material-tailwind/react";
 import { HiXCircle } from "react-icons/hi";
 
-export default function TerminalModal({ open, handleOpen }) {
+export default function TerminalModal({ open, handleOpen, output, isLoading }) {
   return (
     <>
       <Dialog size="lg" open={open} handler={handleOpen} className="">
@@ -12,8 +17,14 @@ export default function TerminalModal({ open, handleOpen }) {
             <HiXCircle className="text-red-500" />
           </button>
         </DialogHeader>
-        <DialogBody className="bg-primary text-gray-800 h-60">
-          Terminal Here
+        <DialogBody className="bg-primary text-gray-900 h-60 overflow-y-auto">
+          {isLoading ? (
+            <div className="h-3/4 flex items-center justify-center">
+              <Spinner color="indigo" />
+            </div>
+          ) : (
+            <div className="whitespace-pre-wrap">{output}</div>
+          )}
         </DialogBody>
       </Dialog>
     </>
