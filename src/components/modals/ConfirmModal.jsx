@@ -11,10 +11,8 @@ export default function ConfirmModal({ open, handleOpen }) {
   return (
     <>
       <Dialog className="bg-secondary" open={open} handler={handleOpen}>
-        <DialogHeader className="text-white font-bold">
-          Accept Quest?
-        </DialogHeader>
-        <DialogBody className="text-gray-400">
+        <DialogHeader className=" font-bold">Accept Quest?</DialogHeader>
+        <DialogBody className="text-gray-600">
           Are you sure you want to accept this quest?
         </DialogBody>
         <DialogFooter>

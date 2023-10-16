@@ -12,7 +12,7 @@ import { GiFireGem } from "react-icons/gi";
 import { HiStar } from "react-icons/hi";
 // import { HiStar } from "react-icons/hi";
 
-export default function QuestCard({ quest, handleOpen }) {
+export default function QuestCard({ quest, status, handleOpen }) {
   return (
     <Card className=" flex flex-col justify-between overflow-hidden bg-secondary">
       <div>
@@ -21,9 +21,7 @@ export default function QuestCard({ quest, handleOpen }) {
           shadow={false}
           color="transparent"
           className="m-0 rounded-none"
-        >
-          <img src={quest.cover} />
-        </CardHeader>
+        ></CardHeader>
         <CardBody className="pb-0">
           <Typography
             variant="h6"
@@ -66,11 +64,17 @@ export default function QuestCard({ quest, handleOpen }) {
             {quest.exp}
           </Typography>
         </Tooltip>
-        {quest.subscription === "basic" ? (
+        {!status && (
+          <Button onClick={handleOpen} size="sm" color="blue-gray">
+            Result
+          </Button>
+        )}
+        {status && quest.type === "basic" && (
           <Button onClick={handleOpen} size="sm" color="indigo">
             Accept
           </Button>
-        ) : (
+        )}
+        {status && quest.type === "pro" && (
           <Button
             onClick={handleOpen}
             size="sm"
