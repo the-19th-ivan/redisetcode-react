@@ -70,7 +70,11 @@ export default function QuestCard({ quest, status, handleOpen }) {
           </Button>
         )}
         {status && quest.type === "basic" && (
-          <Button onClick={handleOpen} size="sm" color="indigo">
+          <Button
+            onClick={() => handleOpen(quest._id)}
+            size="sm"
+            color="indigo"
+          >
             Accept
           </Button>
         )}

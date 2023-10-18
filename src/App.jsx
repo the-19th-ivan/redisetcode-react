@@ -91,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path="/session"
+          path="/quest/:questId"
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <QuestSession />

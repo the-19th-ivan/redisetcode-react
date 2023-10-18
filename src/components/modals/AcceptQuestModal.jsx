@@ -6,14 +6,17 @@ import {
   DialogFooter,
   DialogHeader,
 } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
-export default function ConfirmModal({ open, handleOpen, onSubmit }) {
+export default function AcceptQuestModal({ open, handleOpen, openQuest }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <Dialog className="bg-secondary" open={open} handler={handleOpen}>
-        <DialogHeader className=" font-bold">Submit Quest?</DialogHeader>
+        <DialogHeader className=" font-bold">Accept Quest?</DialogHeader>
         <DialogBody className="text-gray-600">
-          Are you sure you want to submit this quest?
+          Are you sure you want to accept this quest?
         </DialogBody>
         <DialogFooter>
           <Button
@@ -24,7 +27,11 @@ export default function ConfirmModal({ open, handleOpen, onSubmit }) {
           >
             <span>Cancel</span>
           </Button>
-          <Button variant="gradient" color="green" onClick={onSubmit}>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => navigate(`/quest/${openQuest.quest._id}`)}
+          >
             <span>Accept</span>
           </Button>
         </DialogFooter>

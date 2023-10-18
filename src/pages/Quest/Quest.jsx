@@ -3,34 +3,16 @@ import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 import { GiHillConquest } from "react-icons/gi";
 import QuestCard from "./QuestCard";
-import ConfirmModal from "../../components/modals/ConfirmModal";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-
-const quests = [
-  {
-    name: "Collecting Gems",
-    cover: "cpp_cover2.png",
-    description: "Collect various types of gems in the mines",
-    exp: 50,
-    requirements: ["Data Types"],
-    subscription: "basic",
-  },
-  {
-    name: "Slaying Slimes",
-    cover: "dsa_cover2.png",
-    description: "Slay 12 slimes in the Candid Forest",
-    exp: 50,
-    requirements: ["Variables", "C++", "Arithmetic Operation"],
-    subscription: "basic",
-  },
-];
+import AcceptQuestModal from "../../components/modals/AcceptQuestModal";
 
 export default function Quest() {
   const [confirmModal, setConfirmModal] = useState(false);
   const [quests, setQuests] = useState([]);
+  const [openQuest, setOpenQuest] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [cookies] = useCookies(["jwt"]);
 
@@ -71,7 +53,11 @@ export default function Quest() {
     fetchData();
   }, [cookies.jwt, navigate]);
 
-  function handleOpen() {
+  function handleOpen(id) {
+    if (id) {
+      const quest = quests.find((item) => item.quest._id === id);
+      setOpenQuest(quest);
+    }
     setConfirmModal((current) => !current);
   }
 
@@ -110,7 +96,11 @@ export default function Quest() {
         )}
       </section>
 
-      <ConfirmModal open={confirmModal} handleOpen={handleOpen} />
+      <AcceptQuestModal
+        open={confirmModal}
+        handleOpen={handleOpen}
+        openQuest={openQuest}
+      />
     </main>
   );
 }
