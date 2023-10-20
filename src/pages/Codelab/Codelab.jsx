@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import TerminalModal from "../../components/modals/TerminalModal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import InputTerminalModal from "../../components/modals/InputTerminalModal";
 
 const helloWorld = `#include<iostream>
 using namespace std;
@@ -46,6 +47,8 @@ export default function Codelab() {
   const [isLoading, setIsLoading] = useState(false);
   const [userCode, setUserCode] = useState(helloWorld);
   const [output, setOutput] = useState("");
+  const [openInputTerminal, setOpenInputTerminal] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
   const navigate = useNavigate();
 
@@ -79,14 +82,20 @@ export default function Codelab() {
     }
   }, [monaco]);
 
+  function textAreaToString(textAreaValue) {
+    return textAreaValue.split("\n").join(" ");
+  }
+
   // Send to server for compilation
-  async function handleRun() {
+  async function handleSubmit() {
+    setOpenInputTerminal(false);
     setOpenTerminal(true);
     setIsLoading(true);
 
     try {
       const data = {
         code: userCode,
+        input: `${textAreaToString(userInput)}`,
       };
 
       const response = await axios.post(
@@ -97,12 +106,35 @@ export default function Codelab() {
       const responseData = response.data;
       const compiledCode = responseData.stdout || responseData.stderr;
       setOutput(compiledCode);
+      setUserInput("");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
       navigate("/server-error");
       setIsLoading(false);
     }
+  }
+
+  function handleRun() {
+    const occurrenceCount = countOccurrences(userCode);
+    if (occurrenceCount <= 0) {
+      handleSubmit();
+      return;
+    }
+
+    setOpenInputTerminal(true);
+  }
+
+  function countOccurrences(inputString) {
+    // Escape any special characters in the word
+    const escapedWord = "cin >>".replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    // Create a regular expression with optional spaces
+    const regex = new RegExp(escapedWord.replace(/\s/g, "\\s*"), "g");
+
+    // Use the match method to find all matches and return the count
+    const matches = inputString.match(regex);
+    return matches ? matches.length : 0;
   }
 
   return (
@@ -161,6 +193,18 @@ export default function Codelab() {
         handleOpen={handleOpenTerminal}
         output={output}
         isLoading={isLoading}
+      />
+
+      <InputTerminalModal
+        open={openInputTerminal}
+        handleOpen={() => {
+          setOpenInputTerminal(false);
+          setUserInput("");
+        }}
+        size={countOccurrences(userCode)}
+        userInput={userInput}
+        handleUserInput={setUserInput}
+        onSubmit={handleSubmit}
       />
     </main>
   );

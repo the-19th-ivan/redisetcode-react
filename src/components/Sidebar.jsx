@@ -60,7 +60,7 @@ export function Sidebar() {
           </ListItem>
         </Link>
       </List>
-      <Alert
+      {/* <Alert
         open={openAlert}
         className="my-auto"
         onClose={() => setOpenAlert(false)}
@@ -87,7 +87,7 @@ export function Sidebar() {
             Upgrade Now
           </Typography>
         </div>
-      </Alert>
+      </Alert> */}
     </Card>
   );
 }

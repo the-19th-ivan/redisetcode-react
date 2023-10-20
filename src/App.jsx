@@ -14,6 +14,7 @@ import ServerError from "./pages/ServerError";
 import { useCookies } from "react-cookie";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Home from "./pages/Home/Home";
+import QuestResult from "./pages/Quest/QuestResult";
 
 function App() {
   /*
@@ -95,6 +96,14 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <QuestSession />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quest/:questId/result"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <QuestResult />
             </ProtectedRoute>
           }
         />

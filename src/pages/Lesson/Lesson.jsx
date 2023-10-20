@@ -19,6 +19,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
+import InputTerminalModal from "../../components/modals/InputTerminalModal";
 
 export default function Lesson() {
   const monaco = useMonaco();
@@ -27,13 +28,15 @@ export default function Lesson() {
   const [openLevelUpModal, setOpenLevelUpModal] = useState(false);
   const [nextLessonBtn, setNextLessonBtn] = useState(false);
   const [openTerminal, setOpenTerminal] = useState(false);
-  const [userCode, setUserCode] = useState();
+  const [userCode, setUserCode] = useState("");
   const [lesson, setLesson] = useState({});
   const [nextLesson, setNextLesson] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isCompiling, setIsCompiling] = useState(false);
   const [output, setOutput] = useState();
   const [cookies] = useCookies(["jwt"]);
+  const [openInputTerminal, setOpenInputTerminal] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
   const navigate = useNavigate();
   const { stageId } = useParams();
@@ -147,14 +150,20 @@ export default function Lesson() {
     }
   }
 
+  function textAreaToString(textAreaValue) {
+    return textAreaValue.split("\n").join(" ");
+  }
+
   // Send to server for compilation
-  async function handleRun() {
+  async function handleSubmit() {
+    setOpenInputTerminal(false);
     setOpenTerminal(true);
     setIsCompiling(true);
 
     try {
       const data = {
         code: userCode,
+        input: `${textAreaToString(userInput)}`,
       };
 
       const response = await axios.post(
@@ -165,12 +174,35 @@ export default function Lesson() {
       const responseData = response.data;
       const compiledCode = responseData.stdout || responseData.stderr;
       setOutput(compiledCode);
+      setUserInput("");
       setIsCompiling(false);
     } catch (error) {
       console.log(error);
       navigate("/server-error");
       setIsLoading(false);
     }
+  }
+
+  function handleRun() {
+    const occurrenceCount = countOccurrences(userCode);
+    if (occurrenceCount <= 0) {
+      handleSubmit();
+      return;
+    }
+
+    setOpenInputTerminal(true);
+  }
+
+  function countOccurrences(inputString) {
+    // Escape any special characters in the word
+    const escapedWord = "cin >>".replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    // Create a regular expression with optional spaces
+    const regex = new RegExp(escapedWord.replace(/\s/g, "\\s*"), "g");
+
+    // Use the match method to find all matches and return the count
+    const matches = inputString.match(regex);
+    return matches ? matches.length : 0;
   }
 
   function handleNextStage() {
@@ -296,6 +328,18 @@ export default function Lesson() {
         handleOpen={handleOpenTerminal}
         output={output}
         isLoading={isCompiling}
+      />
+
+      <InputTerminalModal
+        open={openInputTerminal}
+        handleOpen={() => {
+          setOpenInputTerminal(false);
+          setUserInput("");
+        }}
+        size={countOccurrences(userCode)}
+        userInput={userInput}
+        handleUserInput={setUserInput}
+        onSubmit={handleSubmit}
       />
     </main>
   );

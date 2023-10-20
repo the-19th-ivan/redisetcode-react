@@ -10,9 +10,12 @@ import {
 } from "@material-tailwind/react";
 import { GiFireGem } from "react-icons/gi";
 import { HiStar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 // import { HiStar } from "react-icons/hi";
 
 export default function QuestCard({ quest, status, handleOpen }) {
+  const navigate = useNavigate();
+
   return (
     <Card className=" flex flex-col justify-between overflow-hidden bg-secondary">
       <div>
@@ -65,7 +68,11 @@ export default function QuestCard({ quest, status, handleOpen }) {
           </Typography>
         </Tooltip>
         {!status && (
-          <Button onClick={handleOpen} size="sm" color="blue-gray">
+          <Button
+            onClick={() => navigate(`/quest/${quest._id}/result`)}
+            size="sm"
+            color="blue-gray"
+          >
             Result
           </Button>
         )}
