@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import BadgeModal from "../../components/modals/BadgeModal";
 
 // Signup card component
 export function SignupForm({ character }) {
@@ -18,6 +19,7 @@ export function SignupForm({ character }) {
   const [cookies, setCookie] = useCookies(["jwt"]); // Do not remove cookies even if not used or it will cause error
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const {
     register,
     handleSubmit,
@@ -56,7 +58,10 @@ export function SignupForm({ character }) {
       reset();
       setServerError({});
 
-      // Navigate to the desired page
+      if (user.badges.length !== 0) {
+        setOpenModal(true);
+        return;
+      }
       navigate("/map");
     } catch (error) {
       if (error.response.status === 400) {
@@ -186,6 +191,14 @@ export function SignupForm({ character }) {
           </p>
         </section>
       </CardBody>
+
+      <BadgeModal
+        open={openModal}
+        handleOpen={() => {
+          setOpenModal(false);
+          navigate("/map");
+        }}
+      />
     </Card>
   );
 }

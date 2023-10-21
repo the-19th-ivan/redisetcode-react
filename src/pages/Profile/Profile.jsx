@@ -5,6 +5,7 @@ import {
   CardBody,
   Chip,
   Spinner,
+  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import Navbar from "../../components/Navbar";
@@ -155,48 +156,31 @@ export default function Profile() {
                     Badges
                   </Typography>
 
-                  <div className="mt-10 grid grid-cols-4 gap-10">
-                    {/* Badge */}
-                    <div className="flex flex-col items-center justify-center gap-3">
-                      <Avatar src="/newbie.png" alt="avatar" size="xl" />
-                      <Typography
-                        variant="h6"
-                        className="text-gray-900 font-montserrat font-semibold"
-                      >
-                        Newbie Kinobi
-                      </Typography>
+                  {user.badges.length === 0 ? (
+                    <div className="flex justify-center items-center p-10">
+                      No Badges Available
                     </div>
-                    {/* Badge */}
-                    <div className="flex flex-col items-center justify-center gap-3">
-                      <Avatar src="/finisher.png" alt="avatar" size="xl" />
-                      <Typography
-                        variant="h6"
-                        className="text-gray-900 font-montserrat font-semibold"
-                      >
-                        Finisher
-                      </Typography>
+                  ) : (
+                    <div className="mt-10 grid grid-cols-4 gap-10">
+                      {user.badges.map((badge) => (
+                        <Tooltip
+                          content={badge.description}
+                          placement="bottom"
+                          key={badge._id}
+                        >
+                          <div className="flex flex-col items-center justify-center gap-3">
+                            <Avatar src={badge.image} alt="avatar" size="xl" />
+                            <Typography
+                              variant="h6"
+                              className="text-gray-900 font-montserrat font-semibold"
+                            >
+                              {badge.name}
+                            </Typography>
+                          </div>
+                        </Tooltip>
+                      ))}
                     </div>
-                    {/* Badge */}
-                    <div className="flex flex-col items-center justify-center gap-3">
-                      <Avatar src="/first_user.png" alt="avatar" size="xl" />
-                      <Typography
-                        variant="h6"
-                        className="text-gray-900 font-montserrat font-semibold"
-                      >
-                        First User
-                      </Typography>
-                    </div>
-                    {/* Badge */}
-                    <div className="flex flex-col items-center justify-center gap-3">
-                      <Avatar src="/lucky.png" alt="avatar" size="xl" />
-                      <Typography
-                        variant="h6"
-                        className="text-gray-900 font-montserrat font-semibold"
-                      >
-                        Lucky One
-                      </Typography>
-                    </div>
-                  </div>
+                  )}
                 </CardBody>
               </Card>
             </div>

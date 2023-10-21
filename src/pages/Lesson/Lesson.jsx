@@ -20,6 +20,7 @@ import axios from "axios";
 import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
+import BadgeModal from "../../components/modals/BadgeModal";
 
 export default function Lesson() {
   const monaco = useMonaco();
@@ -37,6 +38,7 @@ export default function Lesson() {
   const [cookies] = useCookies(["jwt"]);
   const [openInputTerminal, setOpenInputTerminal] = useState(false);
   const [userInput, setUserInput] = useState("");
+  const [badgeModal, setBadgeModal] = useState(false);
 
   const navigate = useNavigate();
   const { stageId } = useParams();
@@ -133,6 +135,9 @@ export default function Lesson() {
       const responseData = response.data.data;
 
       setIsLoading(false);
+      if (responseData.earnBadge.flag) {
+        setBadgeModal(true);
+      }
       if (responseData.levelUp) {
         setOpenLevelUpModal(true);
       } else {
@@ -319,6 +324,12 @@ export default function Lesson() {
       <LessonCompletedModal
         open={openModal === "already-completed"}
         handleOpen={() => handleOpenModal("")}
+      />
+      <BadgeModal
+        open={badgeModal}
+        handleOpen={() => {
+          setBadgeModal(false);
+        }}
       />
       <LevelUpModal
         open={openLevelUpModal}
