@@ -92,6 +92,7 @@ export default function QuestSession() {
 
       const data = {
         userResponses: selectedResponses,
+        bonus: cookies.event === "Bonus",
       };
 
       const response = await axios.post(
@@ -118,6 +119,7 @@ export default function QuestSession() {
     setResult,
     setOpenQuestModal,
     navigate,
+    cookies.event,
   ]);
 
   // Timer

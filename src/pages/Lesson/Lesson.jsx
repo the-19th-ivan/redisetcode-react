@@ -114,6 +114,8 @@ export default function Lesson() {
     try {
       setIsLoading(true);
 
+      const isBonusEvent = cookies.event === "Bonus";
+
       const config = {
         headers: {
           Authorization: `Bearer ${cookies.jwt}`,
@@ -122,7 +124,9 @@ export default function Lesson() {
 
       const response = await axios.post(
         `http://localhost:8000/api/v1/stages/${stageId}/mark-as-done`,
-        {},
+        {
+          bonus: isBonusEvent,
+        },
         config
       );
 

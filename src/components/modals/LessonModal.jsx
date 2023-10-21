@@ -5,6 +5,7 @@ import {
   DialogBody,
   Typography,
 } from "@material-tailwind/react";
+import { useCookies } from "react-cookie";
 import { GiFireGem } from "react-icons/gi";
 
 export default function LessonModal({
@@ -14,6 +15,8 @@ export default function LessonModal({
   title,
   exp,
 }) {
+  const [cookies] = useCookies([]);
+
   return (
     <>
       <Dialog open={open} handler={handleOpen} className="bg-secondary pt-6">
@@ -41,7 +44,7 @@ export default function LessonModal({
             >
               <div className="flex items-center gap-1 font-bold">
                 <GiFireGem className="text-red-600 text-lg" />
-                {exp} EXP
+                {cookies.event === "Bonus" ? exp * 2 : exp} EXP
               </div>
               earned
             </Typography>

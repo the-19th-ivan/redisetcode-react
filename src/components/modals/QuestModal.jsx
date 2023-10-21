@@ -5,11 +5,28 @@ import {
   DialogBody,
   Typography,
 } from "@material-tailwind/react";
+import { useCookies } from "react-cookie";
 import { GiFireGem } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
 export default function QuestModal({ open, result, quest }) {
   const navigate = useNavigate();
+  const [cookies] = useCookies([]);
+
+  function assignExp() {
+    let exp = 0;
+    if (result.isPassed && cookies.event === "Bonus") {
+      exp = quest.exp * 2;
+    } else if (!result.isPassed && cookies.event === "Bonus") {
+      exp = Math.floor(quest.exp / 2) * 2;
+    } else if (result.isPassed) {
+      exp = quest.exp;
+    } else if (!result.isPassed) {
+      exp = Math.floor(quest.exp / 2);
+    }
+
+    return exp;
+  }
 
   return (
     <Dialog open={open} className="bg-secondary pt-6">
@@ -36,7 +53,7 @@ export default function QuestModal({ open, result, quest }) {
           >
             <div className="flex items-center gap-1 font-bold">
               <GiFireGem className="text-red-600 text-lg" />
-              {result.isPassed ? quest.exp : Math.floor(quest.exp / 2)} XP
+              {assignExp()} XP
             </div>
             earned
           </Typography>
@@ -55,7 +72,12 @@ export default function QuestModal({ open, result, quest }) {
             >
               <span>Continue</span>
             </Button>
-            <Button variant="text" color="red" className="mt-2">
+            <Button
+              variant="text"
+              color="red"
+              className="mt-2"
+              onClick={() => navigate(`/quest/${quest._id}/result`)}
+            >
               <span>View Result</span>
             </Button>
           </div>
