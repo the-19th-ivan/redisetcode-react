@@ -73,16 +73,16 @@ export default function Login() {
   }
 
   return (
-    <main className="p-10 bg-primary">
-      <section className="flex justify-center items-center">
-        <div className="w-3/5 p-20">
+    <main className="p-4 lg:p-10 bg-primary">
+      <section className="flex h-screen justify-center items-center">
+        <div className="hidden lg:block w-3/5 p-20">
           <img
-            className="w-full object-cover object-center"
+            className="w-4/5 object-cover object-center"
             src="/login_cover.svg"
           />
         </div>
-        <div className="w-2/5">
-          <Card className="bg-secondary">
+        <div className="w-full lg:w-2/5 flex justify-center">
+          <Card className="bg-secondary md:w-3/4 lg:w-full">
             <CardBody>
               <div className="text-center dark:text-white">
                 <Link to="/">

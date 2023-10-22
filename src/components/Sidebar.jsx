@@ -17,7 +17,7 @@ export function Sidebar() {
   const [openAlert, setOpenAlert] = React.useState(true);
 
   return (
-    <Card className="fixed top-0 left-0 z-40 h-screen w-[15rem] rounded-none bg-secondary">
+    <Card className="hidden lg:block fixed top-0 left-0 z-40 h-screen w-[15rem] rounded-none bg-secondary">
       <div className="border-b border-gray-400 p-4">
         <Typography variant="h4" color="black" className="font-mavenPro">
           <div className="flex items-center">

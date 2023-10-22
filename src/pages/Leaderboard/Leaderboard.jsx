@@ -7,6 +7,7 @@ import RankingTable from "./RankingTable";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MobileNav from "../../components/MobileNav";
 
 export default function Leaderboard() {
   const [users, setUsers] = useState([]);
@@ -41,8 +42,9 @@ export default function Leaderboard() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
 
         {/* Content */}
         {isLoading ? (
@@ -57,7 +59,7 @@ export default function Leaderboard() {
                 will earn cash prize
               </Typography>
             </Alert>
-            <div className="w-full p-10">
+            <div className="w-full p-4 lg:p-10">
               <Typography
                 variant="h4"
                 className="text-gray-900 font-montserrat font-bold flex gap-3"
@@ -66,7 +68,7 @@ export default function Leaderboard() {
                 Leaderboard
               </Typography>
 
-              <div className="mt-6 grid grid-cols-3 gap-6">
+              <div className="mt-6 grid lg:grid-cols-3 gap-6">
                 {topThree.map((user, index) => (
                   <TopRankCard key={index} data={user} rank={index + 1} />
                 ))}

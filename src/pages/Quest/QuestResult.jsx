@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import MobileNav from "../../components/MobileNav";
 
 export default function QuestResult() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,14 +62,15 @@ export default function QuestResult() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full p-10">
+          <div className="w-full p-4 lg:p-10">
             <Typography
               variant="h4"
               className="text-gray-900 font-montserrat font-bold flex gap-3"

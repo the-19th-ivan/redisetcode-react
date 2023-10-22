@@ -48,15 +48,15 @@ export default function Signup() {
   }
 
   return (
-    <main className="bg-primary">
-      <section className="p-10 flex gap-6">
-        <div className="w-3/5 flex flex-col items-center">
+    <main className="bg-primary h-screen lg:flex items-center">
+      <section className="p-4 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-6">
+        <div className="lg:w-3/5 lg:px-12 flex flex-col items-center">
           <Characters
             onGetCharacter={handleGetCharacter}
             characters={characters}
           />
         </div>
-        <div className="w-2/5">
+        <div className="lg:w-2/5 ">
           <SignupForm character={character} />
         </div>
       </section>

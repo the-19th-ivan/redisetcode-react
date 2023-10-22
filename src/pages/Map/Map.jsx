@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import EventModal from "../../components/modals/EventModal";
+import MobileNav from "../../components/MobileNav";
 
 const dailyTips = [
   "Why learn programming? Well, think of it as teaching your computer to do the Macarena – it's a dance party for geeks!",
@@ -61,15 +62,16 @@ export default function Map() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
 
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full p-10">
+          <div className="w-full p-4 lg:p-10">
             <Typography
               variant="small"
               className="text-gray-800 font-montserrat font-bold"
@@ -83,7 +85,7 @@ export default function Map() {
               Explored Regions
             </Typography>
 
-            <div className="mt-8 grid grid-cols-3 gap-6">
+            <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {regions.map((region) => (
                 <RegionCard key={region.title} region={region} />
               ))}

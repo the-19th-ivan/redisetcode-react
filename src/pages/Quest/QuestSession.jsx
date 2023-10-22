@@ -234,7 +234,7 @@ export default function QuestSession() {
             {quest.questions[currentQuestionIndex].questionText}
           </Typography>
 
-          <div className="w-1/2 mx-auto grid grid-cols-2 gap-4 mt-10 relative">
+          <div className="w-full lg:w-1/2 mx-auto grid grid-rows-4 lg:grid-cols-2 gap-4 mt-10 relative">
             {quest.questions[currentQuestionIndex].options.map(
               (option, index) => (
                 <Button

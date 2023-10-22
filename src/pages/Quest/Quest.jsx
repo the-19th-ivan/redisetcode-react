@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import AcceptQuestModal from "../../components/modals/AcceptQuestModal";
+import MobileNav from "../../components/MobileNav";
 
 export default function Quest() {
   const [confirmModal, setConfirmModal] = useState(false);
@@ -65,15 +66,16 @@ export default function Quest() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
 
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full p-10">
+          <div className="bg-primary w-full p-4 lg:p-10">
             <Typography
               variant="h4"
               className="text-gray-900 font-montserrat font-bold flex gap-3"
@@ -82,7 +84,7 @@ export default function Quest() {
               Quest Board
             </Typography>
 
-            <div className="mt-6 grid grid-cols-4 gap-6">
+            <div className="mt-6 grid lg:grid-cols-4 gap-6">
               {quests.map((quest) => (
                 <QuestCard
                   key={quest.name}

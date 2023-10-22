@@ -14,6 +14,7 @@ import TerminalModal from "../../components/modals/TerminalModal";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
+import MobileNav from "../../components/MobileNav";
 
 const helloWorld = `#include<iostream>
 using namespace std;
@@ -141,12 +142,13 @@ export default function Codelab() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
 
         {/* Content */}
-        <div className="w-full h-[80vh] p-4">
-          <div className="flex justify-between items-center p-1">
+        <div className="w-full h-screen lg:h-[80vh] p-4">
+          <div className="flex flex-col-reverse lg:flex-row lg:justify-between lg:items-center p-1">
             <p className="">main.cpp</p>
             <div className="flex gap-4">
               <div className="bg-secondary">

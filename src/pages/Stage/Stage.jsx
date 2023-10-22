@@ -12,6 +12,7 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import MobileNav from "../../components/MobileNav";
 
 export default function Stage() {
   const [stages, setStages] = useState([]);
@@ -60,17 +61,18 @@ export default function Stage() {
     <main className="bg-primary">
       <Sidebar />
 
-      <section className="sm:ml-[15rem] h-full grid grid-rows-[auto,1fr]">
+      <section className="lg:ml-[15rem] h-full grid grid-rows-[auto,1fr]">
         <Navbar />
+        <MobileNav />
 
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full h-full p-10 flex gap-8">
+          <div className="w-full h-full p-4 lg:p-10 flex gap-8">
             {/* Make this list of stage card scrollable so that I dont need to scroll the whole screen */}
-            <div className="w-3/4 h-[75vh] pr-10 overflow-y-auto">
+            <div className="w-full lg:w-3/4 h-screen lg:pr-10 lg:overflow-y-auto">
               {stages.map((stage) => (
                 <StageCard
                   key={stage._id}
@@ -79,7 +81,7 @@ export default function Stage() {
                 />
               ))}
             </div>
-            <div className="w-1/4">
+            <div className="hidden lg:block w-1/4">
               <Card className="w-full max-w-[48rem] flex-row bg-secondary">
                 <CardBody>
                   <Typography

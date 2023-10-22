@@ -5,7 +5,7 @@ export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
-    <nav className="bg-secondary border-b border-gray-400 px-10 py-2.5">
+    <nav className="hidden lg:block bg-secondary border-b border-gray-400 px-10 py-2.5">
       <div className="flex justify-between items-center">
         {/* Left navbar */}
         <div className="flex items-center space-x-8">

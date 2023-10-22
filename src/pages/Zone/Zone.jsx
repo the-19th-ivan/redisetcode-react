@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import MobileNav from "../../components/MobileNav";
 
 export default function Zone() {
   const [zones, setZones] = useState([]);
@@ -54,15 +55,16 @@ export default function Zone() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
 
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full p-10">
+          <div className="w-full p-4 lg:p-10">
             <Carousel className="rounded-xl">
               {zones.map((zone) => (
                 <ZoneCarousel key={zone.title} zone={zone} />

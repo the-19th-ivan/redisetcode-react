@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MobileNav from "../../components/MobileNav";
 
 export default function Profile() {
   const [cookies, setCookie] = useCookies(["jwt"]);
@@ -71,24 +72,26 @@ export default function Profile() {
     <main className="bg-primary h-screen">
       <Sidebar />
 
-      <section className="sm:ml-[15rem]">
+      <section className="lg:ml-[15rem]">
         <Navbar />
+        <MobileNav />
+
         {isLoading ? (
           <div className="h-[90vh] flex items-center justify-center">
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="p-10">
+          <div className="p-4 lg:p-10">
             {/* Profile Info */}
-            <div className="flex gap-3">
-              <div className="w-1/5 flex justify-center">
+            <div className="lg:flex gap-3">
+              <div className="w-full lg:w-1/5 flex justify-center">
                 <img
                   className="w-36 rounded-full object-cover object-center"
                   src={user.character.avatar}
                 />
               </div>
-              <div className="4/5">
-                <div className="flex justify-between">
+              <div className="w-4/5">
+                <div className="flex justify-center lg:justify-between lg:items-center">
                   <Typography
                     variant="h4"
                     className="text-gray-900 font-montserrat font-bold flex gap-4"
@@ -96,18 +99,23 @@ export default function Profile() {
                     {user.username}
                     <Chip color="indigo" value="Basic" size="sm" />
                   </Typography>
-                  <Button color="red" onClick={handleLogout}>
+                  <Button
+                    color="red"
+                    onClick={handleLogout}
+                    className="hidden lg:block"
+                  >
                     Logout
                   </Button>
                 </div>
 
                 <Typography
                   variant="lead"
-                  className="text-gray-800 font-montserrat"
+                  className="text-gray-800 text-center lg:text-left font-montserrat"
                 >
                   {user.character.name}
                 </Typography>
-                <div className="mt-6 grid grid-cols-3 w-full gap-10">
+
+                <div className="mt-6 grid md:grid-cols-3 w-full gap-10">
                   <Typography
                     variant="h4"
                     className="text-gray-800 font-montserrat font-medium flex items-center gap-1"
@@ -161,7 +169,7 @@ export default function Profile() {
                       No Badges Available
                     </div>
                   ) : (
-                    <div className="mt-10 grid grid-cols-4 gap-10">
+                    <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10">
                       {user.badges.map((badge) => (
                         <Tooltip
                           content={badge.description}
@@ -184,6 +192,13 @@ export default function Profile() {
                 </CardBody>
               </Card>
             </div>
+            <Button
+              color="red"
+              onClick={handleLogout}
+              className="lg:hidden w-full mt-10"
+            >
+              Logout
+            </Button>
           </div>
         )}
       </section>

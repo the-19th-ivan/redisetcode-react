@@ -248,7 +248,11 @@ export default function Lesson() {
           <div
             className={`flex ${openEditor ? "" : "justify-center"} gap-8 p-4`}
           >
-            <div className="w-1/2 h-[80vh] overflow-y-auto">
+            <div
+              className={`${
+                openEditor ? "md:hidden lg:block" : ""
+              } w-full lg:w-1/2 h-[80vh] overflow-y-auto`}
+            >
               {handleContent()}
               <div className="mt-6">
                 {nextLessonBtn ? (
@@ -274,7 +278,11 @@ export default function Lesson() {
                 )}
               </div>
             </div>
-            <div className={`${openEditor ? "" : "hidden"} w-1/2 h-[80vh]`}>
+            <div
+              className={`${
+                openEditor ? "" : "hidden"
+              } w-full lg:w-1/2 h-[80vh]`}
+            >
               <div className="flex justify-between items-center p-1">
                 <p className="font-medium">main.cpp</p>
                 <Button

@@ -12,7 +12,7 @@ import { GiPointyHat, GiTreasureMap, GiTrophy } from "react-icons/gi";
 import { HiMenu, HiTerminal } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
-export default function LessonNavbar() {
+export default function MobileNav() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
@@ -20,7 +20,7 @@ export default function LessonNavbar() {
 
   return (
     <>
-      <nav className="border-b border-gray-800 px-10 py-2.5">
+      <nav className="lg:hidden bg-secondary border-b border-gray-800 px-10 py-2.5">
         <div className="flex justify-between items-center">
           {/* Left navbar */}
           <div className="flex items-center space-x-8">
@@ -38,12 +38,12 @@ export default function LessonNavbar() {
           {/* Right navbar */}
           <div className="flex items-center space-x-6">
             {/* <Tooltip content="Gems" placement="bottom">
-              <Chip
-                value="100 +"
-                variant="gradient"
-                icon={<GiFireGem className="text-red-800 text-lg" />}
-              />
-            </Tooltip> */}
+                <Chip
+                  value="100 +"
+                  variant="gradient"
+                  icon={<GiFireGem className="text-red-800 text-lg" />}
+                />
+              </Tooltip> */}
             <Link to="/profile" className="cursor-pointer">
               <div className="flex items-center gap-1">
                 <Avatar

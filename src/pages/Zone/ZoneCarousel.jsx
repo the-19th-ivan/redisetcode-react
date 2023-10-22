@@ -11,7 +11,7 @@ export default function ZoneCarousel({ zone }) {
   }
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-[95vh] lg:h-full w-full">
       <img
         src={zone.cover}
         alt={zone.name}
@@ -33,7 +33,7 @@ export default function ZoneCarousel({ zone }) {
           >
             {zone.description}
           </Typography>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-6">
             {zone.type === "basic" ? (
               <Button size="lg" color="indigo" onClick={handleExplore}>
                 Explore
