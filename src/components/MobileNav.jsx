@@ -44,7 +44,7 @@ export default function MobileNav() {
                   icon={<GiFireGem className="text-red-800 text-lg" />}
                 />
               </Tooltip> */}
-            <Link to="/profile" className="cursor-pointer">
+            <Link to={`/profile/${user.username}`} className="cursor-pointer">
               <div className="flex items-center gap-1">
                 <Avatar
                   src={user.character.avatar}

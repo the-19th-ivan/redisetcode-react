@@ -7,10 +7,19 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { GiFireGem, GiRibbonMedal } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 export default function TopRankCard({ data, rank }) {
+  const navigate = useNavigate();
+
   return (
-    <Card className="bg-secondary">
+    <Card
+      className="bg-secondary cursor-pointer hover:border border-green-800"
+      onClick={() => {
+        localStorage.setItem("lastPage", "/leaderboard");
+        navigate(`/profile/${data.username}`);
+      }}
+    >
       <CardBody className="flex justify-between items-center">
         <div className="flex gap-3">
           <Avatar src={data.character.avatar} alt="avatar" size="lg" />

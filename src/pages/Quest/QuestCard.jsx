@@ -69,7 +69,10 @@ export default function QuestCard({ quest, status, handleOpen }) {
         </Tooltip>
         {!status && (
           <Button
-            onClick={() => navigate(`/quest/${quest._id}/result`)}
+            onClick={() => {
+              localStorage.setItem("lastPage", "/quest");
+              navigate(`/quest/${quest._id}/result`);
+            }}
             size="sm"
             color="blue-gray"
           >

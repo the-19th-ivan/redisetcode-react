@@ -14,7 +14,7 @@ import { GiAchievement, GiFireGem, GiPoliceBadge } from "react-icons/gi";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
 
@@ -22,8 +22,10 @@ export default function Profile() {
   const [cookies, setCookie] = useCookies(["jwt"]);
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const navigate = useNavigate();
+  const { username } = useParams();
 
   // Get the authenticated user based from the jwt token as Bearer Token
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function Profile() {
         };
 
         const response = await axios.get(
-          "http://localhost:8000/api/v1/users/my-profile",
+          `http://localhost:8000/api/v1/users/profile/${username}`,
           config
         );
 
@@ -59,7 +61,7 @@ export default function Profile() {
       }
     }
     fetchData();
-  }, [cookies.jwt, navigate]);
+  }, [cookies.jwt, navigate, username]);
 
   function handleLogout() {
     // Set the expiration time to a past date to invalidate and remove the cookie
@@ -99,13 +101,15 @@ export default function Profile() {
                     {user.username}
                     <Chip color="indigo" value="Basic" size="sm" />
                   </Typography>
-                  <Button
-                    color="red"
-                    onClick={handleLogout}
-                    className="hidden lg:block"
-                  >
-                    Logout
-                  </Button>
+                  {userInfo.username === user.username && (
+                    <Button
+                      color="red"
+                      onClick={handleLogout}
+                      className="hidden lg:block"
+                    >
+                      Logout
+                    </Button>
+                  )}
                 </div>
 
                 <Typography

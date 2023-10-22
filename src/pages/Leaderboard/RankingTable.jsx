@@ -2,10 +2,13 @@
 import { Card, Typography } from "@material-tailwind/react";
 import { GiFireGem } from "react-icons/gi";
 import { HiArrowNarrowUp } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const TABLE_HEAD = ["Rank", "Name", "Character", "Exp"];
 
 export default function RankingTable({ users }) {
+  const navigate = useNavigate();
+
   return (
     <Card className="">
       <table className="w-full text-center">
@@ -28,7 +31,14 @@ export default function RankingTable({ users }) {
         </thead>
         <tbody className="bg-secondary">
           {users.map((user, index) => (
-            <tr key={user._id} className="even:bg-[#f4f4f4]">
+            <tr
+              key={user._id}
+              className="even:bg-[#f4f4f4] hover:border border-green-800 cursor-pointer"
+              onClick={() => {
+                localStorage.setItem("lastPage", "/leaderboard");
+                navigate(`/profile/${user.username}`);
+              }}
+            >
               <td className="p-4">
                 <Typography
                   variant="small"

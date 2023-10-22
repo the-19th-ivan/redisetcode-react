@@ -7,6 +7,11 @@ export default function ZoneCarousel({ zone }) {
   const navigate = useNavigate();
 
   function handleExplore() {
+    localStorage.setItem(
+      "lastPage",
+      `/map/${localStorage.getItem("regionId")}/zones`
+    );
+    localStorage.setItem("zoneId", zone._id);
     navigate(`/stage/${zone._id}/stages`);
   }
 

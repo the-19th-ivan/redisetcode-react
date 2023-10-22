@@ -10,13 +10,16 @@ import {
 import { useState } from "react";
 import { GiPointyHat, GiTreasureMap, GiTrophy } from "react-icons/gi";
 import { HiMenu, HiTerminal } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LessonNavbar() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+
+  const navigate = useNavigate();
+  const lastPage = localStorage.getItem("lastPage");
 
   return (
     <>
@@ -33,6 +36,16 @@ export default function LessonNavbar() {
               <a onClick={openDrawer} className="flex items-center">
                 <HiMenu />
               </a>
+            </Typography>
+
+            <Typography
+              onClick={() => {
+                localStorage.removeItem("lastPage");
+                navigate(lastPage);
+              }}
+              className="cursor-pointer"
+            >
+              Go Back
             </Typography>
           </div>
           {/* Right navbar */}

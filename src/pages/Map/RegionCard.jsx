@@ -18,6 +18,8 @@ export default function RegionCard({ region }) {
   const navigate = useNavigate();
 
   function handleExplore() {
+    localStorage.setItem("lastPage", "/map");
+    localStorage.setItem("regionId", region._id);
     navigate(`/map/${region._id}/zones`);
   }
 

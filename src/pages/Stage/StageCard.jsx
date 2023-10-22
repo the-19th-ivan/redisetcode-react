@@ -29,6 +29,10 @@ export default function StageCard({ stage, status }) {
       return;
     }
 
+    localStorage.setItem(
+      "lastPage",
+      `/stage/${localStorage.getItem("zoneId")}/stages`
+    );
     navigate(`/lesson/${stage._id}`);
   }
 

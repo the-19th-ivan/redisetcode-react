@@ -108,7 +108,7 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path="/profile/:username"
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <Profile />
