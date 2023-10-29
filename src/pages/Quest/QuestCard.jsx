@@ -8,7 +8,7 @@ import {
   Tooltip,
   Typography,
 } from "@material-tailwind/react";
-import { GiFireGem } from "react-icons/gi";
+import { GiBlackBook, GiFireGem, GiScrollUnfurled } from "react-icons/gi";
 import { HiStar } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 // import { HiStar } from "react-icons/hi";
@@ -26,6 +26,9 @@ export default function QuestCard({ quest, status, handleOpen }) {
           className="m-0 rounded-none"
         ></CardHeader>
         <CardBody className="pb-0">
+          <Typography variant="h1" className="mb-4">
+            <GiBlackBook/>
+          </Typography>
           <Typography
             variant="h6"
             className="text-gray-900 font-montserrat font-bold whitespace-nowrap overflow-ellipsis overflow-hidden"

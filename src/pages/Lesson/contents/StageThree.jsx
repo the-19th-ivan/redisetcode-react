@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Typography } from "@material-tailwind/react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function StageThree() {
   return (
@@ -8,98 +9,100 @@ export default function StageThree() {
         variant="h4"
         className="text-gray-900 font-semibold text-center"
       >
-        Storing Enchantment: Memory Concept
+        🔵 Variables 🔴
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Hello again, young apprentice! We're back for the next part of our
-        adventure at Hebrion Academy. Today, we're going to explore the
-        fascinating world of memory in C++. Think of memory like a treasure
-        chest where we keep important things for our spells. Just like a wizard
-        keeps ingredients for potions, we need memory to work our programming
-        magic.
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        The Tale of Memory: Storing Enchantment
+        As Alex's programming journey continued, they couldn't help but wonder
+        about another fundamental concept: variables. Professor Bytes had a way
+        of making even the most complex ideas seem approachable. 🤔
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Imagine that memory is like a special chest for wizards, where they
-        store their magical ingredients. In the programming world, memory is our
-        special chest. It's where we keep things our spells (code) need to do
-        their magic. Just like wizards need their ingredients, we need memory.
+        One day, Alex approached Professor Bytes and asked, "I keep hearing
+        about these things called 'variables.' What are they, and how do they
+        fit into programming?" 🙋‍♂️
       </Typography>
 
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Discussing Memory Concepts
+      <img src="/assets/box.png" className="w-36 my-10" />
+
+      <Typography variant="paragraph" className="mt-4">
+        Professor Bytes smiled and replied, "Ah, variables are like containers
+        that hold information in a program. Just like you might use a box to
+        store your toys, we use variables to store data in our code. They're an
+        essential part of programming because they allow us to work with and
+        manipulate information." 📦
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        In our magical world, we have two main places to keep our things:
-      </Typography>
-
-      <Typography variant="unordered-list" className="mt-2 pl-4">
-        <ul className="list-disc">
-          <li>
-            <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">Stack:</span> This is like a
-              temporary shelf in our chest. We use it to store things we need
-              for a short time. It's like a wizard grabbing an ingredient, using
-              it, and then putting it back.
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">Heap:</span> The heap is like a
-              secret part of our chest where we store valuable things for a long
-              time. This is where we keep bigger and more important items, like
-              complex spells. It's like keeping your most powerful ingredients
-              safe and ready for big spells.
-            </Typography>
-          </li>
-        </ul>
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        The Role of Pointers: Connecting the Dots
+        Alex nodded, beginning to see the connection. "So, how do you create and
+        use variables?" 🤓
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        In our magical code, we use something called "pointers" to connect to
-        the things in our memory chest. Pointers are like magic wands that help
-        us reach into the chest and use what's inside. Just as a wizard uses a
-        wand to cast spells, we use pointers to make our code work its magic.
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Conclusion: Harnessing the Power of Memory
+        "Great question," Professor Bytes continued. "In C++, you create a
+        variable by specifying its type and giving it a name. Think of the type
+        as the kind of container, and the name as the label on the box. For
+        example, let's say you want to store a number. You could create a
+        variable like this: 📊
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Learning about memory is like discovering the secret compartments of a
-        magical chest. It's an important skill for every apprentice. With
-        memory, we can store and use information, making our spells more
-        powerful and versatile.
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Side Quest
+        <SyntaxHighlighter language="cpp">{`int myNumber;`}</SyntaxHighlighter>
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Your side quest is to remember that our spell (code) uses memory. Just
-        know it for now as you will need it later for algorithm development. You
-        might study about this topic deeper if you like.
+        In this case, we've created a variable called 'myNumber,' and it's of
+        type 'int,' which stands for 'integer.' It can hold whole numbers." 🧱
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        With this knowledge, you're getting closer to becoming a skilled
-        codekeeper, mastering the art of memory in the digital world.
+        Alex was getting excited. "Okay, so we've got a box, and we've labeled
+        it. But what can we put in it?" 🎉
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Keep the magic alive in your journey of discovery! 🪄📚🧙‍♂️
+        Professor Bytes continued, "You can put all sorts of things in
+        variables. Numbers, like integers or decimals. You can also store text,
+        called 'strings.' Imagine you have a variable called 'myName,' which
+        holds your name as a string, or 'myAge' to store your age as a number.
+        Once you've put something in a variable, you can use it in your program.
+        You can perform calculations with it, display it, or even change its
+        value as your program runs." 🎈
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Alex thought for a moment and asked, "But how do we put something in the
+        variable?" 🤔
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        The professor smiled, "To put a value in a variable, you use an equal
+        sign. It's like placing an item in the box. For example: 📝
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        <SyntaxHighlighter language="cpp">{`int myAge = 25;`}</SyntaxHighlighter>
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        In this line of code, we've put the number 25 into the 'myAge' variable.
+        Now, you can use 'myAge' in your program, and it will have the value
+        25." 🎁
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Alex was fascinated by this concept. Variables were like containers that
+        held the building blocks of a program, and you could use them to create
+        dynamic and interactive code. It was as if they were writing a story
+        where the characters could change and grow. 📜
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        With a better understanding of variables, Alex continued their
+        programming adventure, eager to use these containers to store and
+        manipulate data in their code. What new stories would they create with
+        this newfound knowledge of programming elements? 🚀
       </Typography>
     </main>
   );

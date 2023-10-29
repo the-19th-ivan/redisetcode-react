@@ -14,6 +14,10 @@ import TerminalModal from "../../components/modals/TerminalModal";
 import StageOne from "./contents/StageOne";
 import StageTwo from "./contents/StageTwo";
 import StageThree from "./contents/StageThree";
+import StageFour from "./contents/StageFour";
+import StageFive from "./contents/StageFive";
+import StageSix from "./contents/StageSix";
+import StageSeven from "./contents/StageSeven";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -194,6 +198,11 @@ export default function Lesson() {
 
   function handleRun() {
     const occurrenceCount = countOccurrences(userCode);
+
+    if (!userCode) {
+      return;
+    }
+
     if (occurrenceCount <= 0) {
       handleSubmit();
       return;
@@ -230,6 +239,14 @@ export default function Lesson() {
         return <StageTwo />;
       case "StageThree":
         return <StageThree />;
+      case "StageFour":
+        return <StageFour/>;
+      case "StageFive":
+        return <StageFive/>;
+      case "StageSix":
+        return <StageSix/>;
+      case "StageSeven":
+        return <StageSeven/>;
       default:
         return "No Content";
     }

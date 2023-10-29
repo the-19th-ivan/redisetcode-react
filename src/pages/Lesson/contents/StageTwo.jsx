@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 const code = `#include <iostream>
 using namespace std;
+
 int main() {
     cout << "Hello World!" << endl;
     return 0;
@@ -16,122 +17,131 @@ export default function StageTwo() {
         variant="h4"
         className="text-gray-900 font-semibold text-center"
       >
-        "Hello World" Spell
+        👋 Hello World 👋
+      </Typography>
+
+      <img src="/assets/hello-world.png" className="w-36 my-10" />
+
+      <Typography variant="paragraph" className="mt-4">
+        One day, as Alex continued their journey into the world of programming,
+        they decided to learn about a classic and simple program known as
+        "Hello, World!" It was like the ABC of programming. 📚
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Greetings, young apprentice, to another exciting lesson within Hebrion
-        Academy as we step into the world of spellcasting with C++. Just like a
-        wizard's first spell, our journey begins with the "Hello World" program.
-        Get ready to take your first step into the enchanting realm of C++.
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        The Tale of the "Hello World" Spell
+        In C++, this program looked like this:
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Picture this: You're a novice wizard, standing before a magical cauldron
-        (your computer). To begin your journey, you need a simple spell, like
-        saying "Hello" to the mystical world of programming. This spell is known
-        as "Hello World."
-      </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Discussing the "Hello World" Spell
-      </Typography>
-
-      <Typography variant="code" className="mt-4">
         <SyntaxHighlighter language="cpp">{code}</SyntaxHighlighter>
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        Here's what each part of the spell does:
+        Professor Bytes, always ready to share knowledge, explained the code to
+        Alex: 🧙‍♂️
       </Typography>
 
-      <Typography variant="unordered-list" className="mt-2 pl-4">
-        <ul className="list-disc">
+      <Typography variant="paragraph" className="mt-4">
+        <ul>
           <li>
             <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">#include &lt;iostream&gt;:</span>
-              It's like opening your spellbook to the right page.
+              <strong className="font-bold">1. #include &lt;iostream&gt;:</strong> This line includes the "iostream"
+              library, which stands for "input and output stream." It's like
+              opening a book with all the tools to read and write information.
+              We need this to use the `cout` and `endl` later in the program.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">
-                int main() &#123; ... &#125;:
-              </span>
-              This is your magical circle, where you cast your spell. Everything
-              inside these curly braces is part of your spell.
+            <strong className="font-bold">2. using namespace std;:</strong> This tells the program to use functions
+              and objects from the "std" (standard) part of the library. It's
+              like focusing on the main chapters of the book and skipping the
+              appendix.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">
-                cout &lt;&lt; "Hello World!" &gt;&gt; endl;:
-              </span>
-              This line is the spell itself. It tells the computer to display
-              the message "Hello World!" on the screen.
+            <strong className="font-bold">3. {`int main() { ... }`}:</strong> Here, we define the main function. In C++,
+              a program starts running from the `main` function. It's like the
+              first chapter of a book, where the story begins.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-              <span className="font-semibold">return 0;:</span>
-              It's like closing your magical circle, telling the computer that
-              your spell is complete.
+            <strong className="font-bold">4. cout &lt;&lt; "Hello, World!" &lt;&lt; endl;:</strong> This line is
+              where the magic happens. `cout` is like a messenger, and we use it
+              to send messages to the screen. The `&lt;&lt;` are like arrows
+              pointing to where the message should go, in this case, the screen.
+              It's saying, "Send the message 'Hello, World!' to the screen." The
+              `endl` is like pressing 'Enter' on your keyboard to start a new
+              line.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="paragraph" className="mt-2">
+            <strong className="font-bold">5. return 0;:</strong> This line tells the program that everything went
+              well, and it can stop. The program returns the number 0, which is
+              like saying, "Mission accomplished." 🚀
             </Typography>
           </li>
         </ul>
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        When you recite these words, you'll see the greeting on your screen,
-        just like when a wizard casts a simple spell.
+        Alex, now understanding the concept of including libraries, the role of
+        the semicolon, and each line of code, felt like they were mastering the
+        language of machines. Programming was like a story with its own unique
+        syntax, and they were becoming fluent in it. 📖
+      </Typography>
+      <Typography variant="paragraph" className="mt-4">
+        As Alex delved deeper into the world of programming, they encountered a
+        tiny yet significant character in the code called the "semicolon." This
+        small symbol, often overlooked, played a crucial role in the language of
+        programming. 💬
       </Typography>
 
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Side Note
-      </Typography>
+      <img src="/assets/semicolon.png" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
-        In our magical script, you'll notice a semicolon at the end of the
-        spell. The semicolon serves as the period at the end of a sentence. In
-        our magical code, it tells the computer that a command is complete.
-        Without it, your spell would be like a sentence without a period -
-        unfinished and unclear.
+        Professor Bytes decided to shed light on the importance of the
+        semicolon: 🌟
       </Typography>
-
       <Typography variant="paragraph" className="mt-4">
-        When you include the semicolon, it's like saying "I'm done with this
-        part of the spell." It's the wizard's way of ensuring that the magic
-        flows correctly.
+        "You see, Alex," he began, "the semicolon is like a punctuation mark in
+        the world of programming. Just as a period ends a sentence, a semicolon
+        ends a statement in your code. It's the way we tell the computer that
+        one instruction is complete and the next one is about to begin."
       </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Conclusion
-      </Typography>
-
       <Typography variant="paragraph" className="mt-4">
-        Now you've cast your first spell! It's a small but significant step in
-        your magical journey. Like any great wizard, your path starts with
-        simple spells and then progresses to more powerful incantations.
+        Alex nodded, starting to grasp the significance. "So, without the
+        semicolon, the computer wouldn't understand where one action ends and
+        the next begins?" 🤯
       </Typography>
-
-      <Typography variant="h5" className="text-gray-900 font-semibold mt-6">
-        Side Quest
-      </Typography>
-
       <Typography variant="paragraph" className="mt-4">
-        Your side quest is to cast the "Hello World" spell on your own. Write
-        the spell on your computer, run it, and see the magic happen on your
-        screen. It's your first taste of programming magic, and it's just the
-        beginning of your enchanting adventure.
+        "Exactly," Professor Bytes confirmed. "Imagine if you were reading a
+        story without any punctuation, no periods, no commas, nothing. It would
+        be a jumbled mess. Similarly, in programming, without semicolons, the
+        code would be incomprehensible to the computer." 🤖
       </Typography>
-
       <Typography variant="paragraph" className="mt-4">
-        So, go forth, young sorcerer, and may your programming journey at
-        Hebrion Academy be filled with wonder and discovery! 🪄🌟📜
+        Alex began to appreciate the role of the semicolon as a storyteller's
+        tool in the world of programming. It was the key to clarity and
+        precision, ensuring that the computer followed the instructions as
+        intended. It was like adding periods and commas to create a
+        well-structured narrative. 📝
+      </Typography>
+      <Typography variant="paragraph" className="mt-4">
+        With this newfound understanding, Alex continued their journey, writing
+        code that told stories to machines using semicolons as the storytellers.
+        Each semicolon marked the end of one instruction and the beginning of
+        the next, creating a beautifully structured narrative in the language of
+        technology. 🚧
+      </Typography>
+      <Typography variant="paragraph" className="mt-4">
+        And so, Alex's programming adventure continued, with semicolons guiding
+        the way, ensuring that every line of code was a well-told story for the
+        machines to understand. What would they discover next in their
+        exploration of the digital world? 🌐
       </Typography>
     </main>
   );

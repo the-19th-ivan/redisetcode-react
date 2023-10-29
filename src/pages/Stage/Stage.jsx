@@ -72,7 +72,7 @@ export default function Stage() {
         ) : (
           <div className="w-full h-full p-4 lg:p-10 flex gap-8">
             {/* Make this list of stage card scrollable so that I dont need to scroll the whole screen */}
-            <div className="w-full lg:w-3/4 h-screen lg:pr-10 lg:overflow-y-auto">
+            <div className="w-full lg:w-3/4 h-[78vh] lg:pr-10 lg:overflow-y-auto">
               {stages.map((stage) => (
                 <StageCard
                   key={stage._id}
