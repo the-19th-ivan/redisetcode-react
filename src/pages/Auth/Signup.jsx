@@ -5,12 +5,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Characters from "./Characters";
 import { SignupForm } from "./SignupForm";
+import Confetti from 'react-confetti';
 
 export default function Signup() {
   const [characters, setCharacters] = useState([]); // All characters fetch from DB
   const [character, setCharacter] = useState(null); // The current selected character ID
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const navigate = useNavigate();
+
+  const startConfetti = () => {
+    setShowConfetti(true);
+
+    // You can stop the confetti after a certain duration
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 10000); // Change the duration as needed
+  };
 
   // Fetch All Characters
   useEffect(() => {
@@ -57,9 +68,10 @@ export default function Signup() {
           />
         </div>
         <div className="lg:w-2/5 ">
-          <SignupForm character={character} />
+          <SignupForm character={character} onConfetti={startConfetti} />
         </div>
       </section>
+      {showConfetti && <Confetti/>}
     </main>
   );
 }

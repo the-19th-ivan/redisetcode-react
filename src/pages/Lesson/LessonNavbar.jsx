@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { GiPointyHat, GiTreasureMap, GiTrophy } from "react-icons/gi";
-import { HiMenu, HiTerminal } from "react-icons/hi";
+import { HiArrowNarrowLeft, HiMenu, HiTerminal } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LessonNavbar() {
@@ -39,14 +39,14 @@ export default function LessonNavbar() {
             </Typography>
 
             <Typography
-              onClick={() => {
-                localStorage.removeItem("lastPage");
-                navigate(lastPage);
-              }}
-              className="cursor-pointer"
-            >
-              Go Back
-            </Typography>
+            onClick={() => {
+              localStorage.removeItem("lastPage");
+              navigate(lastPage);
+            }}
+            className="cursor-pointer flex items-center gap-2"
+          >
+            <HiArrowNarrowLeft/> <span>Go Back</span>
+          </Typography>
           </div>
           {/* Right navbar */}
           <div className="flex items-center space-x-6">

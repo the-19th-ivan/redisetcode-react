@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import BadgeModal from "../../components/modals/BadgeModal";
 
 // Signup card component
-export function SignupForm({ character }) {
+export function SignupForm({ character, onConfetti }) {
   // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies(["jwt"]); // Do not remove cookies even if not used or it will cause error
   const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +60,7 @@ export function SignupForm({ character }) {
 
       if (user.badges.length !== 0) {
         setOpenModal(true);
+        onConfetti();
         return;
       }
       navigate("/map");
@@ -154,6 +155,11 @@ export function SignupForm({ character }) {
               <HiOutlineLockClosed />
             </Input>
 
+              <div>
+              <Typography variant="small" className="font-medium italic mb-2">
+              **Please select your character at the left
+            </Typography>
+
             <div className="flex justify-center">
               {isLoading ? (
                 <Button
@@ -173,6 +179,8 @@ export function SignupForm({ character }) {
                   Create An Account
                 </Button>
               )}
+              </div>
+            
             </div>
           </form>
 
@@ -197,6 +205,13 @@ export function SignupForm({ character }) {
         handleOpen={() => {
           setOpenModal(false);
           navigate("/map");
+        }}
+        badge={{
+          _id:
+            "65335d072eee7695841b9aef",
+          name: "Early Bird",
+          image: "/first_user.png",
+          description: "The first user of RediSetCode",
         }}
       />
     </Card>

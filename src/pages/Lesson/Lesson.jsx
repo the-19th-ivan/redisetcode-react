@@ -26,6 +26,8 @@ import LevelUpModal from "../../components/modals/LevelUpModal";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
 import BadgeModal from "../../components/modals/BadgeModal";
 
+
+
 export default function Lesson() {
   const monaco = useMonaco();
   const [openEditor, setOpenEditor] = useState(true);
@@ -43,6 +45,8 @@ export default function Lesson() {
   const [openInputTerminal, setOpenInputTerminal] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [badgeModal, setBadgeModal] = useState(false);
+  const [badge, setBadge] = useState({});
+  const [level, setLevel] = useState(0);
 
   const navigate = useNavigate();
   const { stageId } = useParams();
@@ -141,9 +145,11 @@ export default function Lesson() {
       setIsLoading(false);
       if (responseData.earnBadge.flag) {
         setBadgeModal(true);
+        setBadge(responseData.earnBadge.badge);
       }
-      if (responseData.levelUp) {
+      if (responseData.levelUp.flag) {
         setOpenLevelUpModal(true);
+        setLevel(responseData.levelUp.level)
       } else {
         setOpenModal("mark-as-done");
       }
@@ -270,9 +276,8 @@ export default function Lesson() {
                 openEditor ? "md:hidden lg:block" : ""
               } w-full lg:w-1/2 h-[80vh] overflow-y-auto`}
             >
-              {handleContent()}
-              <div className="mt-6">
-                {nextLessonBtn ? (
+              <div className="mb-4">
+                {nextLessonBtn && 
                   <Button
                     onClick={handleNextStage}
                     size="sm"
@@ -281,9 +286,12 @@ export default function Lesson() {
                   >
                     Next Lesson
                     <HiArrowNarrowRight className="" />
-                  </Button>
-                ) : (
-                  <Button
+                  </Button>}
+              </div>
+              {handleContent()}
+              <div className="mt-6">
+                
+                {!nextLessonBtn && <Button
                     onClick={handleMarkAsDone}
                     size="sm"
                     color="green"
@@ -291,8 +299,8 @@ export default function Lesson() {
                   >
                     <HiCheckCircle className="" />
                     Mark as Done
-                  </Button>
-                )}
+                  </Button>}
+                  
               </div>
             </div>
             <div
@@ -338,7 +346,7 @@ export default function Lesson() {
         <HiOutlineCode className="text-white" />
         {openEditor ? "Close Editor" : "Open Editor"}
       </button>
-
+      
       <LessonModal
         open={openModal === "mark-as-done"}
         handleOpen={() => handleOpenModal("")}
@@ -350,18 +358,22 @@ export default function Lesson() {
         open={openModal === "already-completed"}
         handleOpen={() => handleOpenModal("")}
       />
-      <BadgeModal
-        open={badgeModal}
-        handleOpen={() => {
-          setBadgeModal(false);
-        }}
-      />
+      
       <LevelUpModal
         open={openLevelUpModal}
         handleOpen={() => {
           setOpenLevelUpModal(false);
           setOpenModal("mark-as-done");
         }}
+        level={level}
+      />
+      <BadgeModal
+        open={badgeModal}
+        handleOpen={() => {
+          setBadgeModal(false);
+          setOpenModal("mark-as-done");
+        }}
+        badge={badge}
       />
       <TerminalModal
         open={openTerminal}

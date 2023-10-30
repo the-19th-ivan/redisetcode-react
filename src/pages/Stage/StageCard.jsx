@@ -4,6 +4,9 @@ import { GiBroadsword } from "react-icons/gi";
 import { HiBadgeCheck, HiLockClosed, HiStar } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
+import './animate.css';
+
+
 export default function StageCard({ stage, status }) {
   const navigate = useNavigate();
 
@@ -11,13 +14,13 @@ export default function StageCard({ stage, status }) {
 
   switch (status) {
     case "completed":
-      customClass = "border-green-800 cursor-pointer";
+      customClass = "bg-green-200 border-green-800 cursor-pointer";
       break;
     case "available":
-      customClass = "border-indigo-800 cursor-pointer";
+      customClass = "bg-secondary border-indigo-800 cursor-pointer";
       break;
     case "locked":
-      customClass = "border-red-800 cursor-not-allowed";
+      customClass = "bg-red-50 border-red-800 cursor-not-allowed";
       break;
     case "pro":
       customClass = "border-amber-800 cursor-pointer";
@@ -39,12 +42,12 @@ export default function StageCard({ stage, status }) {
   return (
     <Card
       onClick={handleOpenLesson}
-      className={`w-full max-w-[48rem] flex-row my-6 bg-secondary hover:border ${customClass}`}
+      className={`w-full max-w-[48rem] flex-row my-6  hover:border ${customClass}`}
     >
       <CardBody className="flex items-center gap-8">
         <div>
           {status === "available" && (
-            <GiBroadsword className="text-3xl text-gray-900" />
+            <GiBroadsword className="text-3xl text-gray-900 animate-bounce" />
           )}
           {status === "completed" && (
             <HiBadgeCheck className="text-3xl text-green-800" />

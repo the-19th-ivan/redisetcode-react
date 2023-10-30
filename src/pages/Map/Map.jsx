@@ -76,7 +76,7 @@ export default function Map() {
               variant="small"
               className="text-gray-800 font-montserrat font-bold"
             >
-              FUNDAMENTALS {eventModal}
+              FUNDAMENTALS 
             </Typography>
             <Typography
               variant="h3"

@@ -1,5 +1,6 @@
 import { Avatar, Chip, Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
+import {HiArrowNarrowLeft} from "react-icons/hi";
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -16,9 +17,9 @@ export default function Navbar() {
               localStorage.removeItem("lastPage");
               navigate(lastPage);
             }}
-            className="cursor-pointer"
+            className="cursor-pointer flex items-center gap-2"
           >
-            Go Back
+            <HiArrowNarrowLeft /> <span>Go Back</span>
           </Typography>
         ) : (
           <div className="flex items-center space-x-8">

@@ -12,6 +12,7 @@ import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
 import { useNavigate, useParams } from "react-router-dom";
 import ConfirmModal from "../../components/modals/ConfirmModal";
 import QuestModal from "../../components/modals/QuestModal";
+import LevelUpModal from "../../components/modals/LevelUpModal";
 
 export default function QuestSession() {
   const [cookies] = useCookies(["jwt"]);
@@ -27,6 +28,8 @@ export default function QuestSession() {
   // Use a separate state variable to track whether the time limit has been set
   const [timeLimitSet, setTimeLimitSet] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(timeLimit);
+  const [levelUpModal, setLevelUpModal] = useState(false);
+  const [level, setLevel] = useState(0);
 
   const { questId } = useParams();
   const navigate = useNavigate();
@@ -106,7 +109,13 @@ export default function QuestSession() {
 
       console.log("DONE");
       setIsLoading(false);
-      setOpenQuestModal(true);
+
+      if (jsonData.levelUp.flag) {
+        setLevelUpModal(true);
+        setLevel(jsonData.levelUp.level)
+      } else {
+        setOpenQuestModal(true);
+      }
     } catch (error) {
       navigate("/server-error");
     }
@@ -265,6 +274,15 @@ export default function QuestSession() {
       />
 
       <QuestModal open={openQuestModal} quest={quest} result={result} />
+
+      <LevelUpModal
+        open={levelUpModal}
+        handleOpen={() => {
+          setLevelUpModal(false);
+          setOpenQuestModal(true);
+        }}
+        level={level}
+      />
     </main>
   );
 }
