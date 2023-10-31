@@ -106,11 +106,13 @@ export default function Map() {
         handleOpen={() => setEventModal("")}
         title="Bonus Day"
       >
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-          consequuntur ratione, temporibus autem quia debitis quae eos
-          perferendis? Corporis, sit.
+        <div className="flex flex-col items-center justify-between">
+        <img src="/rating.png" className="w-32" alt="" />
+        <Typography className="text-center">
+          Today is a good day to learn. Complete a Lesson and Quests and <strong className="font-bold">earn double XP</strong> !
         </Typography>
+        </div>
+        
       </EventModal>
 
       <EventModal

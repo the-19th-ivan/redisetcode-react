@@ -24,7 +24,7 @@ export default function Characters({ onGetCharacter, characters }) {
 
   return (
     <>
-    <Typography variant="h5" className="mb-10">
+    <Typography variant="h5" className="mb-10 animate-bounce">
       Select your Character
     </Typography>
       <div className="flex gap-6 items-center">

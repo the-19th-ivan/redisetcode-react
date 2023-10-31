@@ -27,7 +27,7 @@ export default function QuestCard({ quest, status, handleOpen }) {
         ></CardHeader>
         <CardBody className="pb-0">
           <Typography variant="h1" className="mb-4">
-            <GiBlackBook/>
+            <GiBlackBook className="text-8xl"/>
           </Typography>
           <Typography
             variant="h6"

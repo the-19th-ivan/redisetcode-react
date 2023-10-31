@@ -13,6 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ConfirmModal from "../../components/modals/ConfirmModal";
 import QuestModal from "../../components/modals/QuestModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
+import Confetti from 'react-confetti';
 
 export default function QuestSession() {
   const [cookies] = useCookies(["jwt"]);
@@ -23,6 +24,7 @@ export default function QuestSession() {
   const [openModal, setOpenModal] = useState(false);
   const [result, setResult] = useState({});
   const [openQuestModal, setOpenQuestModal] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const [timeLimit, setTimeLimit] = useState(1 * 60);
   // Use a separate state variable to track whether the time limit has been set
@@ -33,6 +35,15 @@ export default function QuestSession() {
 
   const { questId } = useParams();
   const navigate = useNavigate();
+
+  const startConfetti = () => {
+    setShowConfetti(true);
+
+    // You can stop the confetti after a certain duration
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 10000); // Change the duration as needed
+  };
 
   // Fetch quest with API
   useEffect(() => {
@@ -59,7 +70,7 @@ export default function QuestSession() {
         }));
         setUserResponses(initialResponses);
 
-        setTimeLimit(2700);
+        setTimeLimit(2 * 60);
         setTimeLimitSet(true);
         setIsLoading(false);
       } catch (error) {
@@ -110,12 +121,15 @@ export default function QuestSession() {
       console.log("DONE");
       setIsLoading(false);
 
+      startConfetti();
+
       if (jsonData.levelUp.flag) {
         setLevelUpModal(true);
         setLevel(jsonData.levelUp.level)
       } else {
         setOpenQuestModal(true);
       }
+
     } catch (error) {
       navigate("/server-error");
     }
@@ -186,6 +200,7 @@ export default function QuestSession() {
 
   return (
     <main className="p-4 h-screen bg-primary">
+      {showConfetti && <Confetti/>}
       <nav className="mb-6 flex justify-between items-center">
         <Typography
           variant="h4"
@@ -248,7 +263,11 @@ export default function QuestSession() {
               (option, index) => (
                 <Button
                   key={index}
-                  variant="outlined"
+                  variant={
+                    userResponses[currentQuestionIndex].answer === option
+                      ? "filled" // Highlight selected answer
+                      : "outlined"
+                  }
                   className="rounded-full"
                   onClick={() =>
                     handleAnswerSelection(currentQuestionIndex, index)
@@ -256,7 +275,7 @@ export default function QuestSession() {
                   color={
                     userResponses[currentQuestionIndex].answer === option
                       ? "green" // Highlight selected answer
-                      : "light-blue"
+                      : "gray"
                   }
                 >
                   {option}

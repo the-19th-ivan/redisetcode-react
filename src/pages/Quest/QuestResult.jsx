@@ -70,7 +70,7 @@ export default function QuestResult() {
             <Spinner color="indigo" />
           </div>
         ) : (
-          <div className="w-full p-4 lg:p-10">
+          <div className="w-full p-4 lg:p-10 bg-primary">
             <Typography
               variant="h4"
               className="text-gray-900 font-montserrat font-bold flex gap-3"

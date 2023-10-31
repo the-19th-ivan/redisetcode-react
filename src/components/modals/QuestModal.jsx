@@ -32,20 +32,21 @@ export default function QuestModal({ open, result, quest }) {
     <Dialog open={open} className="bg-secondary pt-6">
       <DialogBody className="flex items-center">
         <div className="w-2/5 flex justify-center">
-          <img src="/complete.png" className="w-1/2" alt="" />
+          {result.isPassed ? <img src="/complete.png" className="w-1/2" alt="" />: <img src="/fail.png" className="w-1/2" alt="" />}
+          
         </div>
         <div className="w-3/5">
           <Typography
             variant="h4"
             className="text-gray-900 font-montserrat font-bold"
           >
-            {result.isPassed ? "You Passed!" : "Opps..."}
+            {result.isPassed ? "You Passed!" : "Come Back Stronger!"}
           </Typography>
           <Typography
             variant="sm"
             className="text-gray-800 font-montserrat mt-2"
           >
-            You completed a quest
+            {result.isPassed ? "Nice! You nailed it." : "Don't give up and come back stronger! I believe in you."}
           </Typography>
           <Typography
             variant="paragraph"

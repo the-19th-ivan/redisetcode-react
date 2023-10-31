@@ -1,4 +1,4 @@
-import { Avatar, Chip, Typography } from "@material-tailwind/react";
+import { Avatar, Chip, Tooltip, Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import {HiArrowNarrowLeft} from "react-icons/hi";
 
@@ -56,6 +56,10 @@ export default function Navbar() {
         )}
         {/* Right navbar */}
         <div className="flex items-center space-x-6">
+          {/* <Tooltip content="Bonus Day" position="bottom">
+            <img src="/lucky.png" className="w-8" alt="" />
+            
+          </Tooltip> */}
           <Link to={`/profile/${user.username}`} className="cursor-pointer">
             <div className="flex items-center gap-1">
               <Avatar

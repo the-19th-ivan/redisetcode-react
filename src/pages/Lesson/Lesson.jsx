@@ -25,7 +25,7 @@ import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
 import BadgeModal from "../../components/modals/BadgeModal";
-
+import Confetti from 'react-confetti';
 
 
 export default function Lesson() {
@@ -47,9 +47,19 @@ export default function Lesson() {
   const [badgeModal, setBadgeModal] = useState(false);
   const [badge, setBadge] = useState({});
   const [level, setLevel] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const navigate = useNavigate();
   const { stageId } = useParams();
+
+  const startConfetti = () => {
+    setShowConfetti(true);
+
+    // You can stop the confetti after a certain duration
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 10000); // Change the duration as needed
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -143,6 +153,8 @@ export default function Lesson() {
       const responseData = response.data.data;
 
       setIsLoading(false);
+      startConfetti();
+
       if (responseData.earnBadge.flag) {
         setBadgeModal(true);
         setBadge(responseData.earnBadge.badge);
@@ -153,6 +165,7 @@ export default function Lesson() {
       } else {
         setOpenModal("mark-as-done");
       }
+
 
       setNextLesson(responseData.nextStage);
       setNextLessonBtn(true);
@@ -260,6 +273,7 @@ export default function Lesson() {
 
   return (
     <main>
+      {showConfetti && <Confetti/>}
       <section className="h-full">
         <LessonNavbar />
 
