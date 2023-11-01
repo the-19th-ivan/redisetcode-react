@@ -25,8 +25,15 @@ import LessonCompletedModal from "../../components/modals/LessonCompletedModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
 import BadgeModal from "../../components/modals/BadgeModal";
-import Confetti from 'react-confetti';
-
+import Confetti from "react-confetti";
+import Stage8 from "./contents/Stage8";
+import Stage9 from "./contents/Stage9";
+import Stage10 from "./contents/Stage10";
+import Stage11 from "./contents/Stage11";
+import Stage12 from "./contents/Stage12";
+import Stage13 from "./contents/Stage13";
+import Stage14 from "./contents/Stage14";
+import Stage15 from "./contents/Stage15";
 
 export default function Lesson() {
   const monaco = useMonaco();
@@ -58,7 +65,7 @@ export default function Lesson() {
     // You can stop the confetti after a certain duration
     setTimeout(() => {
       setShowConfetti(false);
-    }, 10000); // Change the duration as needed
+    }, 5000); // Change the duration as needed
   };
 
   useEffect(() => {
@@ -161,11 +168,10 @@ export default function Lesson() {
       }
       if (responseData.levelUp.flag) {
         setOpenLevelUpModal(true);
-        setLevel(responseData.levelUp.level)
+        setLevel(responseData.levelUp.level);
       } else {
         setOpenModal("mark-as-done");
       }
-
 
       setNextLesson(responseData.nextStage);
       setNextLessonBtn(true);
@@ -259,13 +265,29 @@ export default function Lesson() {
       case "StageThree":
         return <StageThree />;
       case "StageFour":
-        return <StageFour/>;
+        return <StageFour />;
       case "StageFive":
-        return <StageFive/>;
+        return <StageFive />;
       case "StageSix":
-        return <StageSix/>;
+        return <StageSix />;
       case "StageSeven":
-        return <StageSeven/>;
+        return <StageSeven />;
+      case "Stage8":
+        return <Stage8 />;
+      case "Stage9":
+        return <Stage9 />;
+      case "Stage10":
+        return <Stage10 />;
+      case "Stage11":
+        return <Stage11 />;
+      case "Stage12":
+        return <Stage12 />;
+      case "Stage13":
+        return <Stage13 />;
+      case "Stage14":
+        return <Stage14 />;
+      case "Stage15":
+        return <Stage15 />;
       default:
         return "No Content";
     }
@@ -273,7 +295,7 @@ export default function Lesson() {
 
   return (
     <main>
-      {showConfetti && <Confetti/>}
+      {showConfetti && <Confetti />}
       <section className="h-full">
         <LessonNavbar />
 
@@ -291,7 +313,7 @@ export default function Lesson() {
               } w-full lg:w-1/2 h-[80vh] overflow-y-auto`}
             >
               <div className="mb-4">
-                {nextLessonBtn && 
+                {nextLessonBtn && (
                   <Button
                     onClick={handleNextStage}
                     size="sm"
@@ -300,12 +322,13 @@ export default function Lesson() {
                   >
                     Next Lesson
                     <HiArrowNarrowRight className="" />
-                  </Button>}
+                  </Button>
+                )}
               </div>
               {handleContent()}
               <div className="mt-6">
-                
-                {!nextLessonBtn && <Button
+                {!nextLessonBtn && (
+                  <Button
                     onClick={handleMarkAsDone}
                     size="sm"
                     color="green"
@@ -313,8 +336,8 @@ export default function Lesson() {
                   >
                     <HiCheckCircle className="" />
                     Mark as Done
-                  </Button>}
-                  
+                  </Button>
+                )}
               </div>
             </div>
             <div
@@ -360,7 +383,7 @@ export default function Lesson() {
         <HiOutlineCode className="text-white" />
         {openEditor ? "Close Editor" : "Open Editor"}
       </button>
-      
+
       <LessonModal
         open={openModal === "mark-as-done"}
         handleOpen={() => handleOpenModal("")}
@@ -372,7 +395,7 @@ export default function Lesson() {
         open={openModal === "already-completed"}
         handleOpen={() => handleOpenModal("")}
       />
-      
+
       <LevelUpModal
         open={openLevelUpModal}
         handleOpen={() => {

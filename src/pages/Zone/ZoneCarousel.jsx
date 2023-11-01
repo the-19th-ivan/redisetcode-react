@@ -53,9 +53,13 @@ export default function ZoneCarousel({ zone }) {
                 Pro
               </Button>
             )}
-            {/* <Typography variant="h6" color="white" className="opacity-80">
-              0/10 Completed
-            </Typography> */}
+            <Typography
+              variant="small"
+              color="white"
+              className="italic font-bold opacity-80"
+            >
+              Click on right to see more
+            </Typography>
           </div>
         </div>
       </div>
