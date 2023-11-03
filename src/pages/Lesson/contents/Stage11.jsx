@@ -10,7 +10,7 @@ export default function CompoundAssignmentOperators() {
         variant="h4"
         className="text-gray-900 font-semibold text-center"
       >
-        Mia's Encounter with Compound Assignment Operators 💡
+        Compound Assignment Operators 💡
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -144,6 +144,32 @@ w /= 4; // Now, w is 4`}
         adventures in the world of technology awaited her, and how would her
         understanding of these operators help her write amazing code? 🌟👩‍💻
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Instead of using the longer way, use the shortcut compound operators 💻
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            First, run the code to check the output
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Change some of the code to use compound operators
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            The output value should be the same as before
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

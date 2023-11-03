@@ -45,8 +45,8 @@ export default function StageFour() {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        <strong className="font-bold">1. int (Integer):</strong>  This data type is used to store whole numbers like
-        -3, 0, 42, or 1001.
+        <strong className="font-bold">1. int (Integer):</strong> This data type
+        is used to store whole numbers like -3, 0, 42, or 1001.
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -54,8 +54,8 @@ export default function StageFour() {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-      <strong className="font-bold">2. double (Double):</strong> This data type holds numbers with decimal
-        points, like 3.14, -0.5, or 99.99.
+        <strong className="font-bold">2. double (Double):</strong> This data
+        type holds numbers with decimal points, like 3.14, -0.5, or 99.99.
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -63,8 +63,8 @@ export default function StageFour() {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-      <strong className="font-bold">3. char (Character):</strong> Short for 'character,' it stores a single
-        character like 'A,' 'b,' or '1.'
+        <strong className="font-bold">3. char (Character):</strong> Short for
+        'character,' it stores a single character like 'A,' 'b,' or '1.'
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -72,8 +72,9 @@ export default function StageFour() {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-      <strong className="font-bold">4. bool (Boolean):</strong> Short for 'boolean,' it can have only two values:
-        'true' or 'false.' It's used for making decisions, like in conditions.
+        <strong className="font-bold">4. bool (Boolean):</strong> Short for
+        'boolean,' it can have only two values: 'true' or 'false.' It's used for
+        making decisions, like in conditions.
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -81,9 +82,9 @@ export default function StageFour() {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-      <strong className="font-bold">5. string (String):</strong> This is used to store text, like names,
-        sentences, or any sequence of characters. For example, 'Hello, World!'
-        can be stored in a string variable.
+        <strong className="font-bold">5. string (String):</strong> This is used
+        to store text, like names, sentences, or any sequence of characters. For
+        example, 'Hello, World!' can be stored in a string variable.
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -124,6 +125,45 @@ export default function StageFour() {
         error-free. What new stories would they create with this deeper
         understanding of programming elements? 🚀
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Introduce yourself program 💻
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Create a string variable "name" and assign your name.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Create an int variable "age" and assign your age.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Create a double variable "gwa" and assign your target GWA to
+            achieve.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Create a character variable "favoriteLetter" and assign your
+            favorite letter in alphabet.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Create a boolean variable "isSingle" and assign your true or false
+            depending on your status.
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

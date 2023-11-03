@@ -31,6 +31,8 @@ export default function Stage13() {
         sections for Granny Smith, Red Delicious, and Gala apples. 🍎🍐🍇
       </Typography>
 
+      <img src="/assets/archive.png" className="w-36 my-10" />
+
       <Typography variant="paragraph" className="mt-4">
         In the programming world, this long shelf with labeled boxes is akin to
         an "array." An array is like a container that allows us to store
@@ -139,6 +141,28 @@ appleInventory[2] = 10;  // Gala`}
         always remembered the helpful analogy from Mr. Anderson's grocery shop.
         🌟
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Create your own Array of things
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Create a string of Array called "favorites" that can hold up to 3
+            values.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Add 3 values to the Array (Your top 3 favorites)
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

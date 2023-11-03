@@ -121,6 +121,24 @@ int plantainsCount = fruitInventory[1][1]; // Access Plantains bananas`}
         the complexity of the data she needed to manage in Mr. Anderson's
         ever-growing grocery store. 🌟
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        This time, will give it to you. Feel free to explore this concept on
+        your own. (This is our challenge for you)
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Learn on your own with this topic. You can use the editor or copy
+            the examples above.
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

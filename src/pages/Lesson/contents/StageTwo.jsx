@@ -45,43 +45,50 @@ export default function StageTwo() {
         <ul>
           <li>
             <Typography variant="paragraph" className="mt-2">
-              <strong className="font-bold">1. #include &lt;iostream&gt;:</strong> This line includes the "iostream"
-              library, which stands for "input and output stream." It's like
-              opening a book with all the tools to read and write information.
-              We need this to use the `cout` and `endl` later in the program.
+              <strong className="font-bold">
+                1. #include &lt;iostream&gt;:
+              </strong>{" "}
+              This line includes the "iostream" library, which stands for "input
+              and output stream." It's like opening a book with all the tools to
+              read and write information. We need this to use the `cout` and
+              `endl` later in the program.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-            <strong className="font-bold">2. using namespace std;:</strong> This tells the program to use functions
-              and objects from the "std" (standard) part of the library. It's
-              like focusing on the main chapters of the book and skipping the
-              appendix.
+              <strong className="font-bold">2. using namespace std;:</strong>{" "}
+              This tells the program to use functions and objects from the "std"
+              (standard) part of the library. It's like focusing on the main
+              chapters of the book and skipping the appendix.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-            <strong className="font-bold">3. {`int main() { ... }`}:</strong> Here, we define the main function. In C++,
-              a program starts running from the `main` function. It's like the
-              first chapter of a book, where the story begins.
+              <strong className="font-bold">3. {`int main() { ... }`}:</strong>{" "}
+              Here, we define the main function. In C++, a program starts
+              running from the `main` function. It's like the first chapter of a
+              book, where the story begins.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-            <strong className="font-bold">4. cout &lt;&lt; "Hello, World!" &lt;&lt; endl;:</strong> This line is
-              where the magic happens. `cout` is like a messenger, and we use it
-              to send messages to the screen. The `&lt;&lt;` are like arrows
-              pointing to where the message should go, in this case, the screen.
-              It's saying, "Send the message 'Hello, World!' to the screen." The
-              `endl` is like pressing 'Enter' on your keyboard to start a new
-              line.
+              <strong className="font-bold">
+                4. cout &lt;&lt; "Hello, World!" &lt;&lt; endl;:
+              </strong>{" "}
+              This line is where the magic happens. `cout` is like a messenger,
+              and we use it to send messages to the screen. The `&lt;&lt;` are
+              like arrows pointing to where the message should go, in this case,
+              the screen. It's saying, "Send the message 'Hello, World!' to the
+              screen." The `endl` is like pressing 'Enter' on your keyboard to
+              start a new line.
             </Typography>
           </li>
           <li>
             <Typography variant="paragraph" className="mt-2">
-            <strong className="font-bold">5. return 0;:</strong> This line tells the program that everything went
-              well, and it can stop. The program returns the number 0, which is
-              like saying, "Mission accomplished." 🚀
+              <strong className="font-bold">5. return 0;:</strong> This line
+              tells the program that everything went well, and it can stop. The
+              program returns the number 0, which is like saying, "Mission
+              accomplished." 🚀
             </Typography>
           </li>
         </ul>
@@ -143,6 +150,39 @@ export default function StageTwo() {
         machines to understand. What would they discover next in their
         exploration of the digital world? 🌐
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        You can actually learn how to code by DOING. Reading will not get you
+        far! The only way is to get your hands dirty and write those codes 💻
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Write your first hello world program on the editor on the right and
+            Run it. See the example above but don't copy paste it (we'll be sad
+            if you do that) 😢
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Instead of outputting "Hello World", we think it's much better to
+            display the name of your crush (e.g., Hello, Alyssa!). Can you do
+            that? (we know you can) 😄
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Here's the exciting part. Post your code to your FB/IG stories (or
+            any social media). Take the risk or lose the chance. We'll leave it
+            up to you. 🤭
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

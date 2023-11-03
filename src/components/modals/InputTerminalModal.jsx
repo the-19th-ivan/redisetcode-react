@@ -29,7 +29,7 @@ export default function InputTerminalModal({
         <DialogBody className="bg-primary text-gray-900 h-60 overflow-y-auto">
           <Textarea
             className="h-full"
-            label={`Please enter ${size} input separated by comma(,).\nEx: 10,John Doe,USA`}
+            label={`Please enter ${size} input`}
             value={userInput}
             onChange={(e) => handleUserInput(e.target.value)}
           />

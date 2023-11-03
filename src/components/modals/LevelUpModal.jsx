@@ -9,19 +9,13 @@ import {
 import { useCookies } from "react-cookie";
 import { GiFireGem } from "react-icons/gi";
 
-export default function LevelUpModal({
-  open,
-  handleOpen,
-  level
-}) {
-
+export default function LevelUpModal({ open, handleOpen, level }) {
   return (
     <>
       <Dialog open={open} className="bg-secondary pt-6">
         <DialogBody className="flex items-center gap-3">
           <div className="w-2/5 flex flex-col items-center justify-center">
-            <img src="/complete.png" className="w-3/4" alt="" />
-            
+            <img src="/level-up.png" className="w-3/4" alt="" />
           </div>
           <div className="w-3/5">
             <Typography
@@ -32,13 +26,13 @@ export default function LevelUpModal({
             </Typography>
 
             <Typography className="mt-3 text-gray-700">
-              Keep going and you will be the next Steve Jobs
+              Keep going and you will be the next Steve Job
             </Typography>
-            
+
             <div className="w-full my-8">
               <div className="mb-2 flex items-center justify-between gap-4">
                 <Typography color="blue-gray" variant="h6">
-                  Level {level-1}
+                  Level {level - 1}
                 </Typography>
                 <Typography color="blue-gray" variant="h6">
                   Level {level}

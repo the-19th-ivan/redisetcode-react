@@ -104,6 +104,27 @@ export default function StageThree() {
         manipulate data in their code. What new stories would they create with
         this newfound knowledge of programming elements? 🚀
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Time to write some code
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Create a variable name "favoriteNumber"
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Assign a value to the variable you created (your favorite number)
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

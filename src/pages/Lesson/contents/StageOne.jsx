@@ -84,6 +84,38 @@ export default function StageOne() {
         was eager to explore even more about programming. What would they
         discover next? 🌟
       </Typography>
+
+      <Typography variant="h5" className=" mt-4">
+        Programming Tips and Tricks
+      </Typography>
+
+      <Typography variant="paragraph" className=" mt-4">
+        Here are the following tips and tricks we recommend before we start this
+        exciting journey:
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Learning should be fun and enjoyable! As much as possible, do things
+            that will make your learning journey more fun and exciting (just
+            like how we made this app).
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Some lessons have coding exercises and a code editor might appear on
+            the right. That's where you write and run your code.
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Do the code exercises (practical knowledge) per lesson and spare
+            some time to visit the Quest section (theoretical knowledge) to
+            assess your knowledge.
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

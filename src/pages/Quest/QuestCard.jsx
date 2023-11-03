@@ -27,7 +27,7 @@ export default function QuestCard({ quest, status, handleOpen }) {
         ></CardHeader>
         <CardBody className="pb-0">
           <Typography variant="h1" className="mb-4">
-            <GiBlackBook className="text-8xl"/>
+            <GiBlackBook className="text-8xl" />
           </Typography>
           <Typography
             variant="h6"
@@ -63,11 +63,11 @@ export default function QuestCard({ quest, status, handleOpen }) {
       <CardFooter className="pt-4 flex items-center justify-between">
         <Tooltip content="Reward">
           <Typography
-            variant="h6"
+            variant="small"
             className="text-gray-800 font-montserrat font-bold hover:cursor-pointer flex items-center gap-1"
           >
             <GiFireGem className="text-xl text-red-600" />
-            {quest.exp}
+            {quest.exp} EXP
           </Typography>
         </Tooltip>
         {!status && (

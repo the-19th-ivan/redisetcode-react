@@ -25,8 +25,8 @@ export default function Stage15() {
 
 int appleInventory[3] = {15, 20, 10}; // Unsorted array
 
-// Sorting the array using std::sort()
-std::sort(std::begin(appleInventory), std::end(appleInventory));`}
+// Sorting the array using sort()
+sort(begin(appleInventory), end(appleInventory));`}
         </SyntaxHighlighter>
       </Typography>
 
@@ -55,10 +55,10 @@ int appleInventory[3] = {10, 15, 20}; // Sorted array
 
 int target = 15; // The quantity of Granny Smith apples we're looking for
 
-// Searching the array using std::find()
-auto result = std::find(std::begin(appleInventory), std::end(appleInventory), target);
+// Searching the array using find()
+auto result = find(begin(appleInventory), end(appleInventory), target);
 
-if (result != std::end(appleInventory)) {
+if (result != end(appleInventory)) {
     // Granny Smith apples found
     // Perform actions like informing the customer
 } else {
@@ -69,7 +69,7 @@ if (result != std::end(appleInventory)) {
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
-        With the help of `std::find()`, Alice efficiently searched the
+        With the help of `find()`, Alice efficiently searched the
         `appleInventory` array to let the customer know if the store had the
         desired Granny Smith apples in stock. 🍎🔍
       </Typography>

@@ -32,6 +32,8 @@ export default function Stage9() {
         language." 🧙‍♂️📜
       </Typography>
 
+      <img src="/assets/prototype.png" className="w-36 my-10" />
+
       <Typography variant="paragraph" className="mt-4">
         Mia was curious but still a bit puzzled. "So, is pseudocode like a
         blueprint for an algorithm?" 🤨🗺️
@@ -109,6 +111,24 @@ End`}
         would make her city an even smarter and more efficient place. What
         exciting adventures lay ahead, and how would pseudocode help her pave
         the way to success? 🌟🏙️
+      </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Convert this pseudocode into an actual code
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-2">
+        <SyntaxHighlighter language="plaintext">
+          {`Start
+  Set a variable 'firstName' to your name
+  Set a variable 'lastName' to your last name
+  Display your full name using firstName and lastName
+End`}
+        </SyntaxHighlighter>
       </Typography>
     </main>
   );

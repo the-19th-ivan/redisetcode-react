@@ -59,7 +59,8 @@ cin >> userAge;`}</SyntaxHighlighter>
 
       <Typography variant="paragraph" className="mt-4">
         Alex understood the basic idea but wanted to know more. "What happens if
-        the user enters something that's not a number? Does the program break?" 🤨
+        the user enters something that's not a number? Does the program break?"
+        🤨
       </Typography>
 
       <Typography variant="paragraph" className="mt-4">
@@ -90,6 +91,31 @@ cin >> userAge;`}</SyntaxHighlighter>
         with users and respond to their input. What exciting applications would
         they develop with this new tool in their programming toolkit? 🚀🎉
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        A content creator will give you money. You can take the money or you can
+        double it and give it to the next person. You decided to double it and
+        give it to that next person (because your a kind person).
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            write a code that will accept how much is the current money and
+            assign it to the "number" variable
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Run your code and enter your inputs. The number you enter will get
+            doubled.
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

@@ -18,6 +18,8 @@ export default function Stage8() {
         create these smart systems. 🏙️💡
       </Typography>
 
+      <img src="/assets/system.png" className="w-36 my-10" />
+
       <Typography variant="paragraph" className=" mt-4">
         One day, while Mia was wandering through the city's tech district, she
         met the Algorithm Guru. This person was known for being really good at
@@ -35,6 +37,8 @@ export default function Stage8() {
         algorithms. They are like the architects of the digital world, the
         secret builders behind all the clever things our city does." 🌆📐
       </Typography>
+
+      <img src="/assets/algorithms.png" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         Mia's eyes lit up, and she asked, "But what exactly are algorithms, and

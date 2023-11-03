@@ -126,6 +126,33 @@ items--; // Now, items is 9`}
         And thus, Mia's programming adventure continued, full of promise and
         endless possibilities. 🌍🌈
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Instead of using the longer way, use the shortcut increment and
+        decrement operators 💻
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            First, run the code to check the output
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            Change some of the code to use increment and decrement operators
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            The output value should be the same as before
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }

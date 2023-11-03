@@ -26,6 +26,8 @@ export default function Stage10() {
         🤔💻
       </Typography>
 
+      <img src="/assets/traffic-lights.png" className="w-36 my-10" />
+
       <Typography variant="paragraph" className="mt-4">
         The Algorithm Guru, always ready to simplify complex ideas, responded,
         "Control structures are like the traffic signals for your code. They
@@ -108,6 +110,8 @@ export default function Stage10() {
         and does the right things." 🚗🛣️
       </Typography>
 
+      <img src="/assets/flow-chart.png" className="w-36 my-10" />
+
       <Typography variant="paragraph" className="mt-4">
         Mia was excited to use control structures to make her programs more
         intelligent and responsive. "So, they help me create programs that can
@@ -136,6 +140,30 @@ export default function Stage10() {
         how would her understanding of control structures help her write amazing
         code? 🌍🚀
       </Typography>
+
+      <Typography variant="h5" className="mt-4">
+        Try It Yourself 🚀
+      </Typography>
+
+      <Typography variant="paragraph" className="mt-4">
+        Using your knowledge with equality operators and this new knowledge, do
+        the following:
+      </Typography>
+
+      <ul className="pl-8 mt-2 list-disc space-y-2">
+        <li>
+          <Typography variant="paragraph">
+            Correct the code so that if grade is 75 and higher, it will display
+            "You Passed!"
+          </Typography>
+        </li>
+        <li>
+          <Typography variant="paragraph">
+            If you encounter an error, read the error message to better
+            understand where the problem is
+          </Typography>
+        </li>
+      </ul>
     </main>
   );
 }
