@@ -12,6 +12,7 @@ import Input from "../../components/Input";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import BadgeModal from "../../components/modals/BadgeModal";
+import oneMonthFromNow from "../../utils/expiration";
 
 // Signup card component
 export function SignupForm({ character, onConfetti }) {
@@ -51,7 +52,7 @@ export function SignupForm({ character, onConfetti }) {
       // Handle the response from the server
       const { token } = response.data;
       const user = response.data.data.user;
-      setCookie("jwt", token, { path: "/" });
+      setCookie("jwt", token, { path: "/", expires: oneMonthFromNow });
       localStorage.setItem("userInfo", JSON.stringify(user));
 
       setIsLoading(false);
@@ -155,32 +156,31 @@ export function SignupForm({ character, onConfetti }) {
               <HiOutlineLockClosed />
             </Input>
 
-              <div>
+            <div>
               <Typography variant="small" className="font-medium italic mb-2">
-              **Please select your character at the left
-            </Typography>
+                **Please select your character at the left
+              </Typography>
 
-            <div className="flex justify-center">
-              {isLoading ? (
-                <Button
-                  type="submit"
-                  color="gray"
-                  disabled
-                  className="w-full font-montserrat"
-                >
-                  Signing up...
-                </Button>
-              ) : (
-                <Button
-                  type="submit"
-                  color="green"
-                  className="w-full font-montserrat"
-                >
-                  Create An Account
-                </Button>
-              )}
+              <div className="flex justify-center">
+                {isLoading ? (
+                  <Button
+                    type="submit"
+                    color="gray"
+                    disabled
+                    className="w-full font-montserrat"
+                  >
+                    Signing up...
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    color="green"
+                    className="w-full font-montserrat"
+                  >
+                    Create An Account
+                  </Button>
+                )}
               </div>
-            
             </div>
           </form>
 
@@ -207,8 +207,7 @@ export function SignupForm({ character, onConfetti }) {
           navigate("/map");
         }}
         badge={{
-          _id:
-            "65335d072eee7695841b9aef",
+          _id: "65335d072eee7695841b9aef",
           name: "Early Bird",
           image: "/first_user.png",
           description: "The first user of RediSetCode",

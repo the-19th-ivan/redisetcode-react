@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import oneMonthFromNow from "../../utils/expiration";
 
 export default function Login() {
   // eslint-disable-next-line no-unused-vars
@@ -35,7 +36,7 @@ export default function Login() {
       // Handle successful login
       const token = response.data.token;
       const user = response.data.data.user;
-      setCookie("jwt", token, { path: "/" });
+      setCookie("jwt", token, { path: "/", expires: oneMonthFromNow });
       localStorage.setItem("userInfo", JSON.stringify(user));
 
       setIsLoading(false);
