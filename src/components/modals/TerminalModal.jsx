@@ -12,7 +12,7 @@ export default function TerminalModal({ open, handleOpen, output, isLoading }) {
     <>
       <Dialog size="lg" open={open} handler={handleOpen} className="">
         <DialogHeader className="bg-secondary text-gray-900 flex justify-between">
-          <p>Xterm</p>
+          <p>Terminal</p>
           <button onClick={handleOpen}>
             <HiXCircle className="text-red-500" />
           </button>

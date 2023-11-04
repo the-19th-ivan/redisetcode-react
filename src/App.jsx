@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Home from "./pages/Home/Home";
 import QuestResult from "./pages/Quest/QuestResult";
+import EmailConfirm from "./pages/Auth/EmailConfirm";
 
 function App() {
   /*
@@ -33,6 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/server-error" element={<ServerError />} />
+        <Route path="/verify" element={<EmailConfirm />} />
 
         {/* Protected Routes */}
         <Route

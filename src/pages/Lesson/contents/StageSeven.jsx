@@ -165,6 +165,13 @@ export default function StageSeven() {
             true or false - by 1 and 0. Remember that.
           </Typography>
         </li>
+        <li>
+          <Typography variant="paragraph">
+            This is the last lesson for this zone. Before proceeding to the next
+            journey, we recommend you to take a quest in the "Quest" page for
+            better learning.
+          </Typography>
+        </li>
       </ul>
     </main>
   );

@@ -32,8 +32,11 @@ export default function QuestModal({ open, result, quest }) {
     <Dialog open={open} className="bg-secondary pt-6">
       <DialogBody className="flex items-center">
         <div className="w-2/5 flex justify-center">
-          {result.isPassed ? <img src="/complete.png" className="w-1/2" alt="" />: <img src="/fail.png" className="w-1/2" alt="" />}
-          
+          {result.isPassed ? (
+            <img src="/congratulation.png" className="w-1/2" alt="" />
+          ) : (
+            <img src="/fail.png" className="w-1/2" alt="" />
+          )}
         </div>
         <div className="w-3/5">
           <Typography
@@ -46,7 +49,9 @@ export default function QuestModal({ open, result, quest }) {
             variant="sm"
             className="text-gray-800 font-montserrat mt-2"
           >
-            {result.isPassed ? "Nice! You nailed it." : "Don't give up and come back stronger! I believe in you."}
+            {result.isPassed
+              ? "Nice! You nailed it."
+              : "Don't give up and come back stronger! I believe in you."}
           </Typography>
           <Typography
             variant="paragraph"

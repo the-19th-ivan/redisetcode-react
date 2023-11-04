@@ -64,7 +64,7 @@ export function SignupForm({ character, onConfetti }) {
         onConfetti();
         return;
       }
-      navigate("/map");
+      navigate("/verify");
     } catch (error) {
       if (error.response.status === 400) {
         // Set the server error if there is an error from the server
@@ -204,7 +204,7 @@ export function SignupForm({ character, onConfetti }) {
         open={openModal}
         handleOpen={() => {
           setOpenModal(false);
-          navigate("/map");
+          navigate("/verify");
         }}
         badge={{
           _id: "65335d072eee7695841b9aef",
