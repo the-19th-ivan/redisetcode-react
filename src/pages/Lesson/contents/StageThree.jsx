@@ -24,7 +24,7 @@ export default function StageThree() {
         fit into programming?" 🙋‍♂️
       </Typography>
 
-      <img src="/assets/box.png" className="w-36 my-10" />
+      <img src="/assets/box.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Professor Bytes smiled and replied, "Ah, variables are like containers

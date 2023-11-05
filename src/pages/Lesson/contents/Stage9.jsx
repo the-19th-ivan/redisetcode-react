@@ -32,7 +32,7 @@ export default function Stage9() {
         language." 🧙‍♂️📜
       </Typography>
 
-      <img src="/assets/prototype.png" className="w-36 my-10" />
+      <img src="/assets/prototype.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Mia was curious but still a bit puzzled. "So, is pseudocode like a

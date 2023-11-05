@@ -26,7 +26,7 @@ export default function StageSeven() {
         decisions based on those comparisons?" 🤔📈
       </Typography>
 
-      <img src="/assets/flow-chart.png" className="w-36 my-10" />
+      <img src="/assets/flowchart.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Professor Bytes smiled and said, "Ah, you're diving into the world of

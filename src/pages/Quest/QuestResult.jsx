@@ -98,7 +98,7 @@ export default function QuestResult() {
                         {res.questionText}
                       </Typography>
                       <img
-                        src={res.isCorrect ? "/checked.png" : "/declined.png"}
+                        src={res.isCorrect ? "/check.svg" : "/incorrect.svg"}
                         className="w-10 object-cover object-center"
                       />
                     </div>

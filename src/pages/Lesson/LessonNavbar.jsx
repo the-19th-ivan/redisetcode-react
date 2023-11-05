@@ -39,14 +39,14 @@ export default function LessonNavbar() {
             </Typography>
 
             <Typography
-            onClick={() => {
-              localStorage.removeItem("lastPage");
-              navigate(lastPage);
-            }}
-            className="cursor-pointer flex items-center gap-2"
-          >
-            <HiArrowNarrowLeft/> <span>Go Back</span>
-          </Typography>
+              onClick={() => {
+                localStorage.removeItem("lastPage");
+                navigate(lastPage);
+              }}
+              className="cursor-pointer flex items-center gap-2"
+            >
+              <HiArrowNarrowLeft /> <span>Go Back</span>
+            </Typography>
           </div>
           {/* Right navbar */}
           <div className="flex items-center space-x-6">
@@ -99,7 +99,7 @@ export default function LessonNavbar() {
         <div className="border-b border-gray-400 p-4">
           <Typography variant="h4" color="black" className="font-mavenPro">
             <div className="flex items-center">
-              <img src="/logo.png" alt="logo" className="mr-2 w-9" />
+              <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
               <p>RediSetCode</p>
             </div>
           </Typography>

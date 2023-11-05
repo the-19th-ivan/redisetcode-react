@@ -25,7 +25,7 @@ export default function StageFive() {
         from a user? How does a program take input from someone like me?" 🤔
       </Typography>
 
-      <img src="/assets/input.png" className="w-36 my-10" />
+      <img src="/assets/input.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Professor Bytes smiled, recognizing Alex's interest in making programs

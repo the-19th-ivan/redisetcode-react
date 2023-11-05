@@ -86,7 +86,7 @@ export default function MobileNav() {
         <div className="border-b border-gray-400 p-4">
           <Typography variant="h4" color="black" className="font-mavenPro">
             <div className="flex items-center">
-              <img src="/logo.png" alt="logo" className="mr-2 w-9" />
+              <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
               <p>RediSetCode</p>
             </div>
           </Typography>

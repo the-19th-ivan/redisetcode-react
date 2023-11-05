@@ -26,7 +26,7 @@ export default function StageSix() {
         calculations, like addition, subtraction, or more complex math?" 🤔
       </Typography>
 
-      <img src="/assets/mathematics.png" className="w-36 my-10" />
+      <img src="/assets/math.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Professor Bytes nodded and said, "Ah, you're talking about arithmetic

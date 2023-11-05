@@ -11,7 +11,7 @@ export default function StageOne() {
         👩‍💻 Intro to Programming 👨‍💻
       </Typography>
 
-      <img src="/assets/village.png" className="w-36 my-10" />
+      <img src="/assets/village.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         Once upon a time in a quiet town called "Digitalville," there lived a
@@ -22,7 +22,7 @@ export default function StageOne() {
         and understand how they followed orders. 🧐
       </Typography>
 
-      <img src="/assets/wizard.png" className="w-36 my-10" />
+      <img src="/assets/wizard.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         One day, a wise old man named Professor Bytes visited Digitalville. He
@@ -38,7 +38,7 @@ export default function StageOne() {
         a recipe to perform tasks. These recipes are called 'programs.' 🍰"
       </Typography>
 
-      <img src="/assets/recipe.png" className="w-36 my-10" />
+      <img src="/assets/recipe.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         Alex's eyes widened with curiosity. "But where is programming used,
@@ -66,7 +66,7 @@ export default function StageOne() {
         creating video games, operating systems, and much more." 💪
       </Typography>
 
-      <img src="/assets/cpp.png" className="w-36 my-10" />
+      <img src="/assets/cpp.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         With this newfound knowledge about programming and C++, Alex returned to

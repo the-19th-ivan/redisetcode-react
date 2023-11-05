@@ -33,9 +33,9 @@ export default function QuestModal({ open, result, quest }) {
       <DialogBody className="flex items-center">
         <div className="w-2/5 flex justify-center">
           {result.isPassed ? (
-            <img src="/congratulation.png" className="w-1/2" alt="" />
+            <img src="/congrats.svg" className="w-1/2" alt="" />
           ) : (
-            <img src="/fail.png" className="w-1/2" alt="" />
+            <img src="/fail.svg" className="w-1/2" alt="" />
           )}
         </div>
         <div className="w-3/5">

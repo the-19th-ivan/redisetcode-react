@@ -306,7 +306,9 @@ export default function Lesson() {
           </div>
         ) : (
           <div
-            className={`flex ${openEditor ? "" : "justify-center"} gap-8 p-4`}
+            className={`flex flex-col lg:flex-row ${
+              openEditor ? "" : "justify-center"
+            } gap-8 p-4`}
           >
             <div
               className={`${

@@ -18,7 +18,7 @@ export default function Stage8() {
         create these smart systems. 🏙️💡
       </Typography>
 
-      <img src="/assets/system.png" className="w-36 my-10" />
+      <img src="/assets/smart-system.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         One day, while Mia was wandering through the city's tech district, she
@@ -38,7 +38,7 @@ export default function Stage8() {
         secret builders behind all the clever things our city does." 🌆📐
       </Typography>
 
-      <img src="/assets/algorithms.png" className="w-36 my-10" />
+      <img src="/assets/algorithm.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className=" mt-4">
         Mia's eyes lit up, and she asked, "But what exactly are algorithms, and

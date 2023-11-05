@@ -22,7 +22,7 @@ export default function LessonModal({
       <Dialog open={open} handler={handleOpen} className="bg-secondary pt-6">
         <DialogBody className="flex items-center">
           <div className="w-2/5 flex justify-center">
-            <img src="/complete.png" className="w-1/2" alt="" />
+            <img src="/complete.svg" className="w-1/2" alt="" />
           </div>
           <div className="w-3/5">
             <Typography

@@ -32,7 +32,7 @@ export default function StageFour() {
         as labels that tell us what's inside the container, our variable." 🏷️
       </Typography>
 
-      <img src="/assets/label.png" className="w-36 my-10" />
+      <img src="/assets/label.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Alex was eager to learn more. "Can you give me some examples of data

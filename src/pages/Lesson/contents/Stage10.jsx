@@ -26,7 +26,7 @@ export default function Stage10() {
         🤔💻
       </Typography>
 
-      <img src="/assets/traffic-lights.png" className="w-36 my-10" />
+      <img src="/assets/traffic-lights.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         The Algorithm Guru, always ready to simplify complex ideas, responded,
@@ -110,7 +110,7 @@ export default function Stage10() {
         and does the right things." 🚗🛣️
       </Typography>
 
-      <img src="/assets/flow-chart.png" className="w-36 my-10" />
+      <img src="/assets/flowchart.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Mia was excited to use control structures to make her programs more

@@ -20,7 +20,7 @@ export default function StageTwo() {
         👋 Hello World 👋
       </Typography>
 
-      <img src="/assets/hello-world.png" className="w-36 my-10" />
+      <img src="/assets/hello-world.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         One day, as Alex continued their journey into the world of programming,
@@ -107,7 +107,7 @@ export default function StageTwo() {
         programming. 💬
       </Typography>
 
-      <img src="/assets/semicolon.png" className="w-36 my-10" />
+      <img src="/assets/semicolon.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         Professor Bytes decided to shed light on the importance of the

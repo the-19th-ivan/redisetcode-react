@@ -107,7 +107,7 @@ export default function Stage() {
                     />
                     <Checkbox
                       color="indigo"
-                      label="Completed"
+                      label="Stage"
                       labelProps={{
                         style: {
                           color: "#030712",

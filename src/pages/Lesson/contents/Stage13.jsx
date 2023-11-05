@@ -31,7 +31,7 @@ export default function Stage13() {
         sections for Granny Smith, Red Delicious, and Gala apples. 🍎🍐🍇
       </Typography>
 
-      <img src="/assets/archive.png" className="w-36 my-10" />
+      <img src="/assets/archive.svg" className="w-36 my-10" />
 
       <Typography variant="paragraph" className="mt-4">
         In the programming world, this long shelf with labeled boxes is akin to

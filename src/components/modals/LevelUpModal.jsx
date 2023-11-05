@@ -15,7 +15,7 @@ export default function LevelUpModal({ open, handleOpen, level }) {
       <Dialog open={open} className="bg-secondary pt-6">
         <DialogBody className="flex items-center gap-3">
           <div className="w-2/5 flex flex-col items-center justify-center">
-            <img src="/level-up.png" className="w-3/4" alt="" />
+            <img src="/level-up.svg" className="w-3/4" alt="" />
           </div>
           <div className="w-3/5">
             <Typography

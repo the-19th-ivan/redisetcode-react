@@ -207,7 +207,7 @@ export function SignupForm({ character, onConfetti }) {
         badge={{
           _id: "65335d072eee7695841b9aef",
           name: "Early Bird",
-          image: "/first_user.png",
+          image: "/badges/early-bird.svg",
           description: "The first user of RediSetCode",
         }}
       />
