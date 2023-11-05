@@ -13,6 +13,7 @@ import {
 } from "@material-tailwind/react";
 import { Editor } from "@monaco-editor/react";
 import {
+  HiArrowLongRight,
   HiArrowUpRight,
   HiBookOpen,
   HiClock,
@@ -25,15 +26,28 @@ export default function Home() {
 
   return (
     <main className="bg-primary h-screen">
-      <section className="px-10 py-20 bg-secondary flex gap-12">
-        <div className="w-1/2">
-          <img
-            src="/covers/cpp_cover.webp"
-            alt=""
-            className="h-96 w-full rounded-lg object-cover object-center"
-          />
+      <nav className="bg-secondary p-4 flex justify-between items-center">
+        <Typography variant="h4" color="black" className="font-mavenPro">
+          <div className="flex items-center">
+            <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
+            <p>RediSetCode</p>
+          </div>
+        </Typography>
+        <div>
+          <Button
+            variant="text"
+            color="indigo"
+            onClick={() => navigate("/login")}
+            className="flex gap-3 items-center"
+          >
+            <span>Login</span>
+            <HiArrowLongRight className="text-lg" />
+          </Button>
         </div>
-        <div className="w-1/2">
+      </nav>
+
+      <section className="px-10 py-20 bg-secondary lg:flex flex-row-reverse gap-12">
+        <div className="lg:w-1/2">
           <Typography variant="h1" className="font-mavenPro font-black">
             Ready, Set, Code!
           </Typography>
@@ -60,6 +74,13 @@ export default function Home() {
             <HiArrowUpRight className="text-lg" />
           </Button>
         </div>
+        <div className="lg:w-1/2 mt-8 lg:mt-0">
+          <img
+            src="/covers/cpp_cover.webp"
+            alt=""
+            className=" w-full rounded-lg object-cover object-center"
+          />
+        </div>
       </section>
 
       <section className="px-10 py-20 bg-gray-200">
@@ -73,7 +94,7 @@ export default function Home() {
           Every character has a unique identity related to programming
         </Typography>
 
-        <div className="w-full grid grid-cols-4 gap-10 mt-10">
+        <div className="w-full space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
           <div
             onClick={() => navigate("/signup")}
             className="flex flex-col items-center gap-4 cursor-pointer"
@@ -105,8 +126,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-10 py-20 bg-secondary flex gap-6">
-        <div className="w-1/2">
+      <section className="px-10 py-20 bg-secondary lg:flex gap-6">
+        <div className="lg:w-1/2">
           <Typography variant="h2" className="font-mavenPro font-black">
             How Learning Happens With RediSetCode?
           </Typography>
@@ -181,13 +202,13 @@ export default function Home() {
           </TimelineItem> */}
           </Timeline>
         </div>
-        <div className="w-1/2 flex justify-center">
-          <img src="/logo.svg" alt="" className="w-80" />
+        <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
+          <img src="/logo.svg" alt="" className="w-60 lg:w-80" />
         </div>
       </section>
 
-      <section className="px-10 py-20 bg-gray-200 flex gap-12">
-        <div className="w-1/2">
+      <section className="px-10 py-20 bg-gray-200 lg:flex gap-12">
+        <div className="lg:w-1/2">
           <Typography variant="h1" className="font-mavenPro font-black">
             Built-in IDE
           </Typography>
@@ -214,7 +235,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="w-1/2">
+        <div className="lg:w-1/2 mt-8 lg:mt-0">
           <Card className="h-full">
             <CardBody className="h-full">
               <Editor
