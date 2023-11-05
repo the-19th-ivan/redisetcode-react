@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function Stage() {
   const [stages, setStages] = useState([]);
@@ -34,7 +35,7 @@ export default function Stage() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/stages/${zoneId}/stages`,
+          `${host}/api/v1/stages/${zoneId}/stages`,
           config
         );
 

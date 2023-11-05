@@ -17,6 +17,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function Profile() {
   const [cookies, setCookie] = useCookies(["jwt"]);
@@ -40,7 +41,7 @@ export default function Profile() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/users/profile/${username}`,
+          `${host}/api/v1/users/profile/${username}`,
           config
         );
 

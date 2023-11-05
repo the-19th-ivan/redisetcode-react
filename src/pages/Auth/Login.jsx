@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import oneMonthFromNow from "../../utils/expiration";
+import { host } from "../../utils/env";
 
 export default function Login() {
   // eslint-disable-next-line no-unused-vars
@@ -28,10 +29,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/auth/login",
-        data
-      );
+      const response = await axios.post(`${host}/api/v1/auth/login`, data);
 
       // Handle successful login
       const token = response.data.token;

@@ -15,6 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import InputTerminalModal from "../../components/modals/InputTerminalModal";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 const helloWorld = `#include<iostream>
 using namespace std;
@@ -100,7 +101,7 @@ export default function Codelab() {
       };
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/codelab/compiler",
+        `${host}/api/v1/codelab/compiler`,
         data
       );
 

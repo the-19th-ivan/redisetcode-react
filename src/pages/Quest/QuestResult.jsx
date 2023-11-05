@@ -14,6 +14,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function QuestResult() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +36,7 @@ export default function QuestResult() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/quests/${questId}/result`,
+          `${host}/api/v1/quests/${questId}/result`,
           config
         );
 

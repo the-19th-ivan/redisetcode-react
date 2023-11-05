@@ -8,6 +8,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import EventModal from "../../components/modals/EventModal";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 const dailyTips = [
   "Why learn programming? Well, think of it as teaching your computer to do the Macarena – it's a dance party for geeks!",
@@ -34,14 +35,12 @@ export default function Map() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/regions"
-        );
+        const response = await axios.get(`${host}/api/v1/regions`);
 
         const jsonData = response.data.data;
         setRegions(jsonData.regions);
 
-        const res = await axios.get("http://localhost:8000/api/v1/events");
+        const res = await axios.get(`${host}/api/v1/events`);
         const { event, msg } = res.data.data;
 
         if (!msg) {
@@ -76,7 +75,7 @@ export default function Map() {
               variant="small"
               className="text-gray-800 font-montserrat font-bold"
             >
-              FUNDAMENTALS 
+              FUNDAMENTALS
             </Typography>
             <Typography
               variant="h3"
@@ -107,12 +106,12 @@ export default function Map() {
         title="Bonus Day"
       >
         <div className="flex flex-col items-center justify-between">
-        <img src="/rating.png" className="w-32" alt="" />
-        <Typography className="text-center">
-          Today is a good day to learn. Complete a Lesson and Quests and <strong className="font-bold">earn double XP</strong> !
-        </Typography>
+          <img src="/rating.png" className="w-32" alt="" />
+          <Typography className="text-center">
+            Today is a good day to learn. Complete a Lesson and Quests and{" "}
+            <strong className="font-bold">earn double XP</strong> !
+          </Typography>
         </div>
-        
       </EventModal>
 
       <EventModal

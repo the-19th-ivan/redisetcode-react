@@ -34,6 +34,7 @@ import Stage12 from "./contents/Stage12";
 import Stage13 from "./contents/Stage13";
 import Stage14 from "./contents/Stage14";
 import Stage15 from "./contents/Stage15";
+import { host } from "../../utils/env";
 
 export default function Lesson() {
   const monaco = useMonaco();
@@ -82,7 +83,7 @@ export default function Lesson() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/stages/${stageId}`,
+          `${host}/api/v1/stages/${stageId}`,
           config
         );
 
@@ -150,7 +151,7 @@ export default function Lesson() {
       };
 
       const response = await axios.post(
-        `http://localhost:8000/api/v1/stages/${stageId}/mark-as-done`,
+        `${host}/api/v1/stages/${stageId}/mark-as-done`,
         {
           bonus: isBonusEvent,
         },
@@ -205,7 +206,7 @@ export default function Lesson() {
       };
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/codelab/compiler",
+        `${host}/api/v1/codelab/compiler`,
         data
       );
 

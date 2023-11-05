@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function Zone() {
   const [zones, setZones] = useState([]);
@@ -28,7 +29,7 @@ export default function Zone() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/zones/${regionId}/zones`,
+          `${host}/api/v1/zones/${regionId}/zones`,
           config
         );
 

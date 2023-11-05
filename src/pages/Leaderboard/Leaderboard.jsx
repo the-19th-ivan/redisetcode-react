@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function Leaderboard() {
   const [users, setUsers] = useState([]);
@@ -20,9 +21,7 @@ export default function Leaderboard() {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/users/leaderboard"
-        );
+        const response = await axios.get(`${host}/api/v1/users/leaderboard`);
 
         const jsonData = response.data.data;
         setUsers(jsonData.users);

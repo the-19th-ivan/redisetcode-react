@@ -9,6 +9,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import AcceptQuestModal from "../../components/modals/AcceptQuestModal";
 import MobileNav from "../../components/MobileNav";
+import { host } from "../../utils/env";
 
 export default function Quest() {
   const [confirmModal, setConfirmModal] = useState(false);
@@ -30,10 +31,7 @@ export default function Quest() {
           },
         };
 
-        const response = await axios.get(
-          `http://localhost:8000/api/v1/quests/get`,
-          config
-        );
+        const response = await axios.get(`${host}/api/v1/quests/get`, config);
 
         const { quests } = response.data.data;
         setQuests(quests);

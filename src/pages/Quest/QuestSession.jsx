@@ -13,7 +13,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import ConfirmModal from "../../components/modals/ConfirmModal";
 import QuestModal from "../../components/modals/QuestModal";
 import LevelUpModal from "../../components/modals/LevelUpModal";
-import Confetti from 'react-confetti';
+import Confetti from "react-confetti";
+import { host } from "../../utils/env";
 
 export default function QuestSession() {
   const [cookies] = useCookies(["jwt"]);
@@ -57,7 +58,7 @@ export default function QuestSession() {
         };
 
         const response = await axios.get(
-          `http://localhost:8000/api/v1/quests/${questId}`,
+          `${host}/api/v1/quests/${questId}`,
           config
         );
         const { quest } = response.data.data;
@@ -110,7 +111,7 @@ export default function QuestSession() {
       };
 
       const response = await axios.post(
-        `http://localhost:8000/api/v1/quests/${questId}/submit`,
+        `${host}/api/v1/quests/${questId}/submit`,
         data,
         config
       );
@@ -125,11 +126,10 @@ export default function QuestSession() {
 
       if (jsonData.levelUp.flag) {
         setLevelUpModal(true);
-        setLevel(jsonData.levelUp.level)
+        setLevel(jsonData.levelUp.level);
       } else {
         setOpenQuestModal(true);
       }
-
     } catch (error) {
       navigate("/server-error");
     }
@@ -200,7 +200,7 @@ export default function QuestSession() {
 
   return (
     <main className="p-4 h-screen bg-primary">
-      {showConfetti && <Confetti/>}
+      {showConfetti && <Confetti />}
       <nav className="mb-6 flex justify-between items-center">
         <Typography
           variant="h4"

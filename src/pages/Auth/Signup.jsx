@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Characters from "./Characters";
 import { SignupForm } from "./SignupForm";
-import Confetti from 'react-confetti';
+import Confetti from "react-confetti";
+import { host } from "../../utils/env";
 
 export default function Signup() {
   const [characters, setCharacters] = useState([]); // All characters fetch from DB
@@ -27,9 +28,7 @@ export default function Signup() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/characters"
-        );
+        const response = await axios.get(`${host}/api/v1/characters`);
         const data = response.data.data;
         setCharacters(data.characters);
       } catch (error) {
@@ -71,7 +70,7 @@ export default function Signup() {
           <SignupForm character={character} onConfetti={startConfetti} />
         </div>
       </section>
-      {showConfetti && <Confetti/>}
+      {showConfetti && <Confetti />}
     </main>
   );
 }

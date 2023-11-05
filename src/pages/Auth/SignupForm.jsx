@@ -13,6 +13,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import BadgeModal from "../../components/modals/BadgeModal";
 import oneMonthFromNow from "../../utils/expiration";
+import { host } from "../../utils/env";
 
 // Signup card component
 export function SignupForm({ character, onConfetti }) {
@@ -44,10 +45,7 @@ export function SignupForm({ character, onConfetti }) {
 
     try {
       // Make API call to send user credentials
-      const response = await axios.post(
-        "http://localhost:8000/api/v1/auth/signup",
-        newUser
-      );
+      const response = await axios.post(`${host}/api/v1/auth/signup`, newUser);
 
       // Handle the response from the server
       const { token } = response.data;
