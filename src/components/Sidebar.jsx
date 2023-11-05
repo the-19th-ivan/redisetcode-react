@@ -18,13 +18,15 @@ export function Sidebar() {
 
   return (
     <Card className="hidden lg:block fixed top-0 left-0 z-40 h-screen w-[15rem] rounded-none bg-secondary">
-      <div className="border-b border-gray-400 p-4">
-        <Typography variant="h4" color="black" className="font-mavenPro">
-          <div className="flex items-center">
-            <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
-            <p>RediSetCode</p>
-          </div>
-        </Typography>
+      <div className=" p-4">
+        <Link to="/">
+          <Typography variant="h4" color="black" className="font-mavenPro">
+            <div className="flex items-center">
+              <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
+              <p>RediSetCode</p>
+            </div>
+          </Typography>
+        </Link>
       </div>
       <List className="text-gray-800 text-lg font-montserrat font-semibold">
         <Link to="/map">

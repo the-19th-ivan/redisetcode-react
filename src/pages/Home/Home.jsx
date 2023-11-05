@@ -65,7 +65,7 @@ export default function Home() {
           </Typography>
 
           <Button
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/map")}
             variant="filled"
             color="green"
             className="mt-10 flex gap-3"
