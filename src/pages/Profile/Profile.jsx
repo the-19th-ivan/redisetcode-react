@@ -87,20 +87,25 @@ export default function Profile() {
           <div className="p-4 lg:p-10">
             {/* Profile Info */}
             <div className="lg:flex gap-3">
-              <div className="w-full lg:w-1/5 flex justify-center">
+              <div className="lg:w-1/5 flex justify-center">
                 <img
                   className="w-36 rounded-full object-cover object-center"
                   src={user.character.avatar}
                 />
               </div>
-              <div className="w-4/5">
+              <div className="lg:w-4/5 ">
                 <div className="flex justify-center lg:justify-between lg:items-center">
                   <Typography
                     variant="h4"
                     className="text-gray-900 font-montserrat font-bold flex gap-4"
                   >
                     {user.username}
-                    <Chip color="indigo" value="Basic" size="sm" />
+                    <Chip
+                      color="indigo"
+                      value="Basic"
+                      size="sm"
+                      className="hidden lg:block"
+                    />
                   </Typography>
                   {userInfo.username === user.username && (
                     <Button

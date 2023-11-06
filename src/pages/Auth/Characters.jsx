@@ -24,9 +24,9 @@ export default function Characters({ onGetCharacter, characters }) {
 
   return (
     <>
-    <Typography variant="h5" className="mb-10 animate-bounce">
-      Select your Character
-    </Typography>
+      <Typography variant="h5" className="mt-4 lg:mt-0 mb-10 animate-bounce">
+        Select your Character
+      </Typography>
       <div className="flex gap-6 items-center">
         <Button
           variant="text"

@@ -7,7 +7,7 @@ export default function LessonCompletedModal({ handleOpen, open }) {
       <DialogBody>
         <div className="py-10 flex flex-col justify-center items-center gap-4">
           <img src="/done.svg" className="w-1/4" alt="" />
-          <Typography variant="lead" className="font-medium">
+          <Typography variant="lead" className="font-medium text-center">
             Looks like you already completed this stage
           </Typography>
         </div>

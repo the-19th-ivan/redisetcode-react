@@ -19,6 +19,7 @@ import {
   HiClock,
   HiLightBulb,
 } from "react-icons/hi2";
+import { DiGithubBadge } from "react-icons/di";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -46,7 +47,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="px-10 py-20 bg-secondary lg:flex flex-row-reverse gap-12">
+      <section className="px-4 lg:px-10 py-20 bg-secondary lg:flex flex-row-reverse gap-12">
         <div className="lg:w-1/2">
           <Typography variant="h1" className="font-mavenPro font-black">
             Ready, Set, Code!
@@ -83,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-10 py-20 bg-gray-200">
+      <section className="px-4 lg:px-10 py-20 bg-gray-200">
         <Typography variant="h4" className="text-center">
           Choose Your Character
         </Typography>
@@ -126,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-10 py-20 bg-secondary lg:flex gap-6">
+      <section className="px-4 lg:px-10 py-20 bg-secondary lg:flex gap-6">
         <div className="lg:w-1/2">
           <Typography variant="h2" className="font-mavenPro font-black">
             How Learning Happens With RediSetCode?
@@ -207,7 +208,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-10 py-20 bg-gray-200 lg:flex gap-12">
+      <section className="px-4 lg:px-10 py-20 bg-gray-200 lg:flex gap-12">
         <div className="lg:w-1/2">
           <Typography variant="h1" className="font-mavenPro font-black">
             Built-in IDE
@@ -236,8 +237,8 @@ export default function Home() {
         </div>
 
         <div className="lg:w-1/2 mt-8 lg:mt-0">
-          <Card className="h-full">
-            <CardBody className="h-full">
+          <Card className="h-60 lg:h-full">
+            <CardBody className="h-full px-0 py-4">
               <Editor
                 width="100%"
                 height="100%"
@@ -253,11 +254,35 @@ int main() {
                 
                 `}
                 theme="vs-light"
+                options={{
+                  // lineNumbers: "off", // Remove line numbers gutter
+                  minimap: {
+                    enabled: false,
+                  },
+                }}
               />
             </CardBody>
           </Card>
         </div>
       </section>
+
+      <footer className="bg-gray-200 px-4 lg:px-10 flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between">
+        <Typography color="blue-gray" className="font-normal">
+          &copy; RediSetCode
+        </Typography>
+        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+          <li>
+            <Typography
+              as="a"
+              href="https://github.com/the-19th-ivan"
+              color="blue-gray"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              <DiGithubBadge className="text-3xl" />
+            </Typography>
+          </li>
+        </ul>
+      </footer>
     </main>
   );
 }

@@ -175,7 +175,7 @@ export default function Codelab() {
             </div>
           </div>
           <Card className="h-full">
-            <CardBody className="h-full">
+            <CardBody className="h-full px-0 py-4">
               <Editor
                 width="100%"
                 height="100%"
@@ -184,6 +184,12 @@ export default function Codelab() {
                 value={userCode}
                 onChange={(value) => {
                   setUserCode(value);
+                }}
+                options={{
+                  // lineNumbers: "off", // Remove line numbers gutter
+                  minimap: {
+                    enabled: false,
+                  },
                 }}
               />
             </CardBody>

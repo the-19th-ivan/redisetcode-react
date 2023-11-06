@@ -80,7 +80,7 @@ export function SignupForm({ character, onConfetti }) {
   }
 
   return (
-    <Card>
+    <Card className="mt-8 lg:mt-0">
       <CardBody className="bg-secondary rounded-lg">
         <section className="">
           <div className="text-center dark:text-white">
@@ -155,10 +155,6 @@ export function SignupForm({ character, onConfetti }) {
             </Input>
 
             <div>
-              <Typography variant="small" className="font-medium italic mb-2">
-                **Please select your character at the left
-              </Typography>
-
               <div className="flex justify-center">
                 {isLoading ? (
                   <Button

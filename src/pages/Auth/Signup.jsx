@@ -58,7 +58,7 @@ export default function Signup() {
   }
 
   return (
-    <main className="bg-primary h-screen lg:flex items-center">
+    <main className="bg-primary h-screen w-full">
       <section className="p-4 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-6">
         <div className="lg:w-3/5 lg:px-12 flex flex-col items-center">
           <Characters
