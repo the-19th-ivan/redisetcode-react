@@ -10,13 +10,14 @@ import {
 import { useState } from "react";
 import { GiPointyHat, GiTreasureMap, GiTrophy } from "react-icons/gi";
 import { HiMenu, HiTerminal } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MobileNav() {
   const user = JSON.parse(localStorage.getItem("userInfo"));
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function MobileNav() {
                   size="sm"
                   variant="rounded"
                 />
-                <div>
+                {/* <div>
                   <Typography
                     variant="paragraph"
                     className="font-poppins font-medium"
@@ -65,10 +66,10 @@ export default function MobileNav() {
                   >
                     {user.character.name}
                   </Typography>
-                </div>
+                </div> */}
               </div>
             </Link>
-            {user.type === "basic" ? (
+            {/* {user.type === "basic" ? (
               <Chip color="indigo" value="Basic" className="hidden lg:block" />
             ) : (
               <Chip
@@ -77,14 +78,19 @@ export default function MobileNav() {
                 value="Pro"
                 className="hidden lg:block"
               />
-            )}
+            )} */}
           </div>
         </div>
       </nav>
 
       <Drawer open={open} onClose={closeDrawer} className="bg-secondary">
         <div className="border-b border-gray-400 p-4">
-          <Typography variant="h4" color="black" className="font-mavenPro">
+          <Typography
+            variant="h4"
+            color="black"
+            className="font-mavenPro"
+            onClick={() => navigate("/")}
+          >
             <div className="flex items-center">
               <img src="/logo.svg" alt="logo" className="mr-2 w-9" />
               <p>RediSetCode</p>
