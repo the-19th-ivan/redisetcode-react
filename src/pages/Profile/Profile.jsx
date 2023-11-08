@@ -108,13 +108,23 @@ export default function Profile() {
                     />
                   </Typography>
                   {userInfo.username === user.username && (
-                    <Button
-                      color="red"
-                      onClick={handleLogout}
-                      className="hidden lg:block"
-                    >
-                      Logout
-                    </Button>
+                    <div>
+                      {/* <Button
+                        color="blue"
+                        variant="text"
+                        onClick={() => navigate(`/profile/${user._id}/edit`)}
+                        className="hidden lg:block"
+                      >
+                        Edit
+                      </Button> */}
+                      <Button
+                        color="red"
+                        onClick={handleLogout}
+                        className="hidden lg:block"
+                      >
+                        Logout
+                      </Button>
+                    </div>
                   )}
                 </div>
 

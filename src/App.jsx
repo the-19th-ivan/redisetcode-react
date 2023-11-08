@@ -16,6 +16,9 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import Home from "./pages/Home/Home";
 import QuestResult from "./pages/Quest/QuestResult";
 import EmailConfirm from "./pages/Auth/EmailConfirm";
+import EditProfile from "./pages/Profile/EditProfile";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
 
 function App() {
   /*
@@ -35,6 +38,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/server-error" element={<ServerError />} />
         <Route path="/verify" element={<EmailConfirm />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:tokenId" element={<ResetPassword />} />
 
         {/* Protected Routes */}
         <Route
@@ -114,6 +119,14 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile/:userId/edit"
+          element={
+            <ProtectedRoute isLoggedIn={isAuthenticated()} navigateTo="/login">
+              <EditProfile />
             </ProtectedRoute>
           }
         />

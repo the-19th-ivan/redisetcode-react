@@ -154,6 +154,13 @@ export default function Login() {
               </form>
 
               <div className="text-center text-gray-800 font-montserrat">
+                <Link
+                  to="/forgot-password"
+                  className="cursor-pointer text-indigo-600 hover:underline italic"
+                >
+                  Forgot password?
+                </Link>
+                <Typography className="text-xs my-2">OR</Typography>
                 <p className="italic">Don&apos;t have an account?</p>
                 <Link
                   to="/signup"
