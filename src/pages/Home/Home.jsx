@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
     <main className="bg-primary h-screen">
@@ -35,15 +36,27 @@ export default function Home() {
           </div>
         </Typography>
         <div>
-          <Button
-            variant="text"
-            color="indigo"
-            onClick={() => navigate("/login")}
-            className="flex gap-3 items-center"
-          >
-            <span>Login</span>
-            <HiArrowLongRight className="text-lg" />
-          </Button>
+          {user ? (
+            <Button
+              variant="text"
+              color="indigo"
+              onClick={() => navigate("/map")}
+              className="flex gap-3 items-center"
+            >
+              <span>Continue</span>
+              <HiArrowLongRight className="text-lg" />
+            </Button>
+          ) : (
+            <Button
+              variant="text"
+              color="indigo"
+              onClick={() => navigate("/login")}
+              className="flex gap-3 items-center"
+            >
+              <span>Login</span>
+              <HiArrowLongRight className="text-lg" />
+            </Button>
+          )}
         </div>
       </nav>
 

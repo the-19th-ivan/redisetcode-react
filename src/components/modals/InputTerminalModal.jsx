@@ -6,6 +6,7 @@ import {
   Textarea,
   DialogFooter,
   Button,
+  Typography,
 } from "@material-tailwind/react";
 import { HiXCircle } from "react-icons/hi";
 
@@ -33,6 +34,10 @@ export default function InputTerminalModal({
             value={userInput}
             onChange={(e) => handleUserInput(e.target.value)}
           />
+          <Typography variant="small" className="">
+            **For multiple inputs, seperate each input by new line(press
+            ENTER)**
+          </Typography>
         </DialogBody>
         <DialogFooter>
           <Button onClick={onSubmit}>Continue</Button>

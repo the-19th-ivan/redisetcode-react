@@ -42,6 +42,65 @@ int main() {
   return 0;
 }`;
 
+const input = `#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << endl << "You entered: " << num << endl;
+    return 0;
+}
+`;
+
+const conditional = `#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    cout << "Enter your age: ";
+    cin >> age;
+
+    if (age >= 18) {
+        cout << endl << "You are an adult." << endl;
+    } else {
+        cout << endl << "You are a minor." << endl;
+    }
+
+    return 0;
+}
+`;
+
+const loop = `#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+`;
+
+const func = `#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int num1, num2;
+    cout << "Enter two numbers: ";
+    cin >> num1 >> num2;
+    int sum = add(num1, num2);
+    cout << endl << "Sum: " << sum << endl;
+    return 0;
+}
+`;
+
 export default function Codelab() {
   const monaco = useMonaco();
   const [openTerminal, setOpenTerminal] = useState(false);
@@ -65,7 +124,18 @@ export default function Codelab() {
       case "basic-addition":
         setUserCode(addition);
         break;
-
+      case "input":
+        setUserCode(input);
+        break;
+      case "conditional":
+        setUserCode(conditional);
+        break;
+      case "loops":
+        setUserCode(loop);
+        break;
+      case "function":
+        setUserCode(func);
+        break;
       default:
         setUserCode(helloWorld);
         break;
@@ -161,6 +231,10 @@ export default function Codelab() {
                 >
                   <Option value="hello-world">Hello World</Option>
                   <Option value="basic-addition">Basic Addition</Option>
+                  <Option value="input">Input & Output</Option>
+                  <Option value="conditional">If Statement</Option>
+                  <Option value="loops">For Loop</Option>
+                  <Option value="function">Function</Option>
                 </Select>
               </div>
               <Button

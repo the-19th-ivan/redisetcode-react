@@ -54,8 +54,8 @@ export default function Leaderboard() {
           <>
             <Alert color="indigo" open={open} onClose={() => setOpen(false)}>
               <Typography variant="small" className="font-bold">
-                Announcement: Top 3 players at the end of November 12, 2023 9am
-                will receive a cash prize
+                Announcement: Top 3 players at the end of Beta Testing will
+                receive a cash prize
               </Typography>
             </Alert>
             <div className="w-full p-4 lg:p-10">
