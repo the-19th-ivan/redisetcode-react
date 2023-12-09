@@ -45,11 +45,11 @@ export default function Map() {
 
         console.log(event.name);
 
-        if (!msg) {
-          setCookie("event", event.name, { path: "/" });
+        // if (!msg) {
+        setCookie("event", event.name, { path: "/" });
 
-          setEventModal(event.name);
-        }
+        setEventModal(event.name);
+        // }
 
         setIsLoading(false);
       } catch (error) {
