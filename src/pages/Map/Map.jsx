@@ -43,8 +43,11 @@ export default function Map() {
         const res = await axios.get(`${host}/api/v1/events`);
         const { event, msg } = res.data.data;
 
+        console.log(event.name);
+
         if (!msg) {
           setCookie("event", event.name, { path: "/" });
+
           setEventModal(event.name);
         }
 
